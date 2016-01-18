@@ -1,3 +1,4 @@
 class PassCode < ActiveRecord::Base
-  belongs_to :Poll
+  belongs_to :p
+  oll
 end

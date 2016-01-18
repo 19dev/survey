@@ -16,7 +16,7 @@
     <% @pass_codes.each do |pass_code| %>
       <tr>
         <td><%= pass_code.passcode %></td>
-        <td><%= pass_code.poll_id %></td>
+        <td><%= pass_code.poll_no %></td>
         <td><%= pass_code.pass_code_is_finished %></td>
         <td><%= link_to 'Show', pass_code %></td>
         <td><%= link_to 'Edit', edit_pass_code_path(pass_code) %></td>

@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20160118110207) do
 
   create_table "answers", force: :cascade do |t|
+    t.integer  "answer_no",          limit: 4
     t.text     "answer_image",       limit: 65535
     t.integer  "question_id",        limit: 4
     t.text     "answer_description", limit: 65535
@@ -23,13 +24,14 @@ ActiveRecord::Schema.define(version: 20160118110207) do
 
   create_table "pass_codes", force: :cascade do |t|
     t.string   "passcode",              limit: 255
-    t.integer  "poll_id",               limit: 4
+    t.integer  "poll_no",               limit: 4
     t.boolean  "pass_code_is_finished"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
   end
 
   create_table "polls", force: :cascade do |t|
+    t.integer  "poll_no",          limit: 4
     t.string   "poll_name",        limit: 255
     t.text     "poll_description", limit: 65535
     t.datetime "poll_start_date"
@@ -39,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160118110207) do
   end
 
   create_table "questions", force: :cascade do |t|
+    t.integer  "question_no",     limit: 4
     t.text     "question_header", limit: 65535
     t.integer  "poll_id",         limit: 4
     t.datetime "created_at",                    null: false
