@@ -1,9 +1,8 @@
 class CreateQuestions < ActiveRecord::Migration
   def change
     create_table :questions do |t|
-      t.integer :question_no
       t.text :question_header
-      t.belongs_to :poll, index: true, foreign_key: true
+      t.integer :poll_id
 
       t.timestamps null: false
     end

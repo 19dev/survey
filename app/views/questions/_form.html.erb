@@ -11,17 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :question_no %><br>
-    <%= f.number_field :question_no %>
-  </div>
+
   <div class="field">
     <%= f.label :question_header %><br>
     <%= f.text_area :question_header %>
   </div>
   <div class="field">
-    <%= f.label :survey_no_id %><br>
-    <%= f.text_field :survey_no_id %>
+    <%= f.label :poll_id%><br>
+    <%= f.number_field :poll_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

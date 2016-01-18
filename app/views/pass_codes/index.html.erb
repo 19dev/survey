@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Pass Codes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Passcode</th>
+      <th>Poll</th>
+      <th>Pass code is finished</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pass_codes.each do |pass_code| %>
+      <tr>
+        <td><%= pass_code.passcode %></td>
+        <td><%= pass_code.poll_id %></td>
+        <td><%= pass_code.pass_code_is_finished %></td>
+        <td><%= link_to 'Show', pass_code %></td>
+        <td><%= link_to 'Edit', edit_pass_code_path(pass_code) %></td>
+        <td><%= link_to 'Destroy', pass_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pass code', new_pass_code_path %>

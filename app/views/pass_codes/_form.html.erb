@@ -1,0 +1,29 @@
+<%= form_for(@pass_code) do |f| %>
+  <% if @pass_code.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pass_code.errors.count, "error") %> prohibited this pass_code from being saved:</h2>
+
+      <ul>
+      <% @pass_code.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :passcode %><br>
+    <%= f.text_field :passcode %>
+  </div>
+  <div class="field">
+    <%= f.label :poll_id %><br>
+    <%= f.number_field :poll_id %>
+  </div>
+  <div class="field">
+    <%= f.label :pass_code_is_finished %><br>
+    <%= f.check_box :pass_code_is_finished %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

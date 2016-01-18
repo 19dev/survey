@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :poll_no %><br>
-    <%= f.text_field :poll_no %>
-  </div>
-  <div class="field">
     <%= f.label :poll_name %><br>
     <%= f.text_field :poll_name %>
   </div>
@@ -25,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :poll_start_date %><br>
-    <%= f.text_field :poll_start_date %>
+    <%= f.datetime_select :poll_start_date %>
   </div>
   <div class="field">
     <%= f.label :poll_finish_date %><br>

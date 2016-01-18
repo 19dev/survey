@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>Poll no</th>
       <th>Poll name</th>
       <th>Poll description</th>
       <th>Poll start date</th>
@@ -17,7 +16,6 @@
   <tbody>
     <% @polls.each do |poll| %>
       <tr>
-        <td><%= poll.poll_no %></td>
         <td><%= poll.poll_name %></td>
         <td><%= poll.poll_description %></td>
         <td><%= poll.poll_start_date %></td>

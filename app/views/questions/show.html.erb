@@ -1,18 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Question no:</strong>
-  <%= @question.question_no %>
-</p>
-
-<p>
   <strong>Question header:</strong>
   <%= @question.question_header %>
 </p>
 
 <p>
-  <strong>Survey no:</strong>
-  <%= @question.survey_no %>
+  <strong>Poll Id:</strong>
+  <%= @question.poll_id %>
 </p>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  passcode: MyString
+  poll_id: 1
+  pass_code_is_finished: false
+
+two:
+  passcode: MyString
+  poll_id: 1
+  pass_code_is_finished: false

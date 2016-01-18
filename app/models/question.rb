@@ -1,3 +1,4 @@
 class Question < ActiveRecord::Base
-  belongs_to :survey_no
+  belongs_to :Poll
+  has_many :answers
 end
