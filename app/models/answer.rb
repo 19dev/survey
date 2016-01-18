@@ -1,4 +1,3 @@
 class Answer < ActiveRecord::Base
-  belongs_to :q
-  uestion
+  belongs_to :Question
 end
