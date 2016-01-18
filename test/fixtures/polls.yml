@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  poll_no: 
+  poll_name: 
+  poll_description: 
+  poll_start_date: 
+  poll_finish_date: 2016-01-18 11:22:08
+
+two:
+  poll_no: 
+  poll_name: 
+  poll_description: 
+  poll_start_date: 
+  poll_finish_date: 2016-01-18 11:22:08

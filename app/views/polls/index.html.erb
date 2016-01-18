@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Polls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Poll no</th>
+      <th>Poll name</th>
+      <th>Poll description</th>
+      <th>Poll start date</th>
+      <th>Poll finish date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @polls.each do |poll| %>
+      <tr>
+        <td><%= poll.poll_no %></td>
+        <td><%= poll.poll_name %></td>
+        <td><%= poll.poll_description %></td>
+        <td><%= poll.poll_start_date %></td>
+        <td><%= poll.poll_finish_date %></td>
+        <td><%= link_to 'Show', poll %></td>
+        <td><%= link_to 'Edit', edit_poll_path(poll) %></td>
+        <td><%= link_to 'Destroy', poll, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Poll', new_poll_path %>

@@ -11,6 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160118092208) do
+
+  create_table "polls", force: :cascade do |t|
+    t.integer  "poll_no",          limit: 4
+    t.string   "poll_name",        limit: 255
+    t.text     "poll_description", limit: 65535
+    t.datetime "poll_start_date"
+    t.datetime "poll_finish_date"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
 
 end
