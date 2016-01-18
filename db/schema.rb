@@ -11,23 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160118110207) do
+ActiveRecord::Schema.define(version: 20160118121811) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "answer_image",       limit: 65535
-    t.integer  "question_id",        limit: 4
     t.text     "answer_description", limit: 65535
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.integer  "question_id",        limit: 4
   end
+
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
 
   create_table "pass_codes", force: :cascade do |t|
     t.string   "passcode",              limit: 255
-    t.integer  "poll_id",               limit: 4
     t.boolean  "pass_code_is_finished"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+    t.integer  "poll_id",               limit: 4
   end
+
+  add_index "pass_codes", ["poll_id"], name: "index_pass_codes_on_poll_id", using: :btree
 
   create_table "polls", force: :cascade do |t|
     t.string   "poll_name",        limit: 255
@@ -40,9 +44,14 @@ ActiveRecord::Schema.define(version: 20160118110207) do
 
   create_table "questions", force: :cascade do |t|
     t.text     "question_header", limit: 65535
-    t.integer  "poll_id",         limit: 4
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.integer  "poll_id",         limit: 4
   end
 
+  add_index "questions", ["poll_id"], name: "index_questions_on_poll_id", using: :btree
+
+  add_foreign_key "answers", "questions"
+  add_foreign_key "pass_codes", "polls"
+  add_foreign_key "questions", "polls"
 end
