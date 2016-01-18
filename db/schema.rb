@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160118121811) do
+ActiveRecord::Schema.define(version: 20160118142225) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "answer_image",       limit: 65535
@@ -51,7 +51,19 @@ ActiveRecord::Schema.define(version: 20160118121811) do
 
   add_index "questions", ["poll_id"], name: "index_questions_on_poll_id", using: :btree
 
+  create_table "records", force: :cascade do |t|
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "pass_code_id", limit: 4
+    t.integer  "answer_id",    limit: 4
+  end
+
+  add_index "records", ["answer_id"], name: "index_records_on_answer_id", using: :btree
+  add_index "records", ["pass_code_id"], name: "index_records_on_pass_code_id", using: :btree
+
   add_foreign_key "answers", "questions"
   add_foreign_key "pass_codes", "polls"
   add_foreign_key "questions", "polls"
+  add_foreign_key "records", "answers"
+  add_foreign_key "records", "pass_codes"
 end
