@@ -6,6 +6,7 @@
   <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Poll</title>
+
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="icon" sizes="192x192" href="images/android-desktop.png">
@@ -15,8 +16,6 @@
   <meta name="msapplication-TileColor" content="#3372DF">
 
   <link rel="shortcut icon" href="images/favicon.png">
-
-
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -30,8 +29,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+       <!-- Top row, always visible -->
+       <div class="mdl-layout__header-row">
+       <!-- Title -->
+          <span class="mdl-layout-title">HTML5 Tutorial</span>
+       </div>
+       <!-- Tabs -->
+       <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+          <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Tab 1</a>
+          <a href="#scroll-tab-2" class="mdl-layout__tab">Tab 2</a>
+          <a href="#scroll-tab-3" class="mdl-layout__tab">Tab 3</a>
+       </div>
+    </header>
+    <div class="mdl-layout__drawer">
+       <span class="mdl-layout-title">HTML5 Tutorial</span>
+       <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="">Home</a>
+          <a class="mdl-navigation__link" href="">About</a>
+       </nav>
+    </div>
+    <main class="mdl-layout__content">
+            <center><%= yield %></center>
+    </main>
+ </div>
 
-  <%= yield %>
+
 
 </body>
 
