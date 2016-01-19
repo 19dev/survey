@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Poll</title>
+  <title>Anket Sistemi</title>
 
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
@@ -17,7 +17,6 @@
 
   <link rel="shortcut icon" href="images/favicon.png">
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -34,7 +33,7 @@
        <!-- Top row, always visible -->
        <div class="mdl-layout__header-row">
        <!-- Title -->
-          <span class="mdl-layout-title">HTML5 Tutorial</span>
+          <span class="mdl-layout-title">Anket Sistemi</span>
        </div>
        <!-- Tabs -->
        <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
@@ -43,13 +42,15 @@
           <a href="#scroll-tab-3" class="mdl-layout__tab">Tab 3</a>
        </div>
     </header>
+    <% if admin_signed_in? %>
     <div class="mdl-layout__drawer">
-       <span class="mdl-layout-title">HTML5 Tutorial</span>
+       <span class="mdl-layout-title">Menü</span>
        <nav class="mdl-navigation">
           <a class="mdl-navigation__link" href="">Home</a>
           <a class="mdl-navigation__link" href="">About</a>
        </nav>
     </div>
+    <% end %>
     <main class="mdl-layout__content">
             <center><%= yield %></center>
     </main>

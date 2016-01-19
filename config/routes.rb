@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :answers
   root to: 'home#index'
   resources :polls
+  resources :admins
 end
