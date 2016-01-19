@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :admins
   resources :pass_codes
   resources :questions
   resources :answers
-  root 'home#index'
+  root to: 'home#index'
   resources :polls
 end

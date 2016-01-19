@@ -1,21 +1,4 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-
-
-* { box-sizing:border-box; }
+/** { box-sizing:border-box; }
 
 body {
 	font-family: Helvetica;
@@ -23,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-hgroup { 
+hgroup {
 	text-align:center;
 	margin-top: 4em;
 }
@@ -43,9 +26,9 @@ form {
 	box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
 }
 
-.group { 
-	position: relative; 
-	margin-bottom: 45px; 
+.group {
+	position: relative;
+	margin-bottom: 45px;
 }
 
 input {
@@ -64,10 +47,9 @@ input {
 input:focus { outline: none; }
 
 
-/* Label */
 
 label {
-	color: #999; 
+	color: #999;
 	font-size: 18px;
 	font-weight: normal;
 	position: absolute;
@@ -78,17 +60,14 @@ label {
 }
 
 
-/* active */
 
 input:focus ~ label, input.used ~ label {
 	top: -20px;
   transform: scale(.75); left: -2px;
-	/* font-size: 14px; */
 	color: #4a89dc;
 }
 
 
-/* Underline */
 
 .bar {
 	position: relative;
@@ -98,11 +77,11 @@ input:focus ~ label, input.used ~ label {
 
 .bar:before, .bar:after {
 	content: '';
-	height: 2px; 
+	height: 2px;
 	width: 0;
-	bottom: 1px; 
+	bottom: 1px;
 	position: absolute;
-	background: #4a89dc; 
+	background: #4a89dc;
 	transition: all 0.2s ease;
 }
 
@@ -111,32 +90,28 @@ input:focus ~ label, input.used ~ label {
 .bar:after { right: 50%; }
 
 
-/* active */
 
 input:focus ~ .bar:before, input:focus ~ .bar:after { width: 50%; }
 
 
-/* Highlight */
 
 .highlight {
 	position: absolute;
-	height: 60%; 
-	width: 100px; 
-	top: 25%; 
+	height: 60%;
+	width: 100px;
+	top: 25%;
 	left: 0;
 	pointer-events: none;
 	opacity: 0.5;
 }
 
 
-/* active */
 
 input:focus ~ .highlight {
 	animation: inputHighlighter 0.3s ease;
 }
 
 
-/* Animations */
 
 @keyframes inputHighlighter {
 	from { background: #4a89dc; }
@@ -144,7 +119,6 @@ input:focus ~ .highlight {
 }
 
 
-/* Button */
 
 .button {
   position: relative;
@@ -168,7 +142,6 @@ input:focus ~ .highlight {
 .button:focus { outline: 0; }
 
 
-/* Button modifiers */
 
 .buttonBlue {
   background: #4a89dc;
@@ -178,7 +151,6 @@ input:focus ~ .highlight {
 .buttonBlue:hover { background: #357bd8; }
 
 
-/* Ripples container */
 
 .ripples {
   position: absolute;
@@ -191,7 +163,6 @@ input:focus ~ .highlight {
 }
 
 
-/* Ripples circle */
 
 .ripplesCircle {
   position: absolute;
@@ -209,8 +180,6 @@ input:focus ~ .highlight {
   animation: ripples .4s ease-in;
 }
 
-
-/* Ripples animation */
 
 @keyframes ripples {
   0% { opacity: 0; }
@@ -250,4 +219,4 @@ footer img {
 
 footer img:hover { opacity: .83; }
 
-footer img:focus , footer a:focus { outline: none; }
+footer img:focus , footer a:focus { outline: none; }*/

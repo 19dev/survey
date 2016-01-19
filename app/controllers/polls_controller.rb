@@ -1,5 +1,6 @@
 class PollsController < ApplicationController
   before_action :set_poll, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!
 
   # GET /polls
   # GET /polls.json

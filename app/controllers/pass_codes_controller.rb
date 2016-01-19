@@ -1,5 +1,6 @@
 class PassCodesController < ApplicationController
   before_action :set_pass_code, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!
 
   # GET /pass_codes
   # GET /pass_codes.json
