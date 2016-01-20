@@ -1,4 +1,4 @@
 class Question < ActiveRecord::Base
-  has_many :answers
-  belongs_to :Pool
+  has_many :answers, dependent: :destroy
+  belongs_to :Poll
 end
