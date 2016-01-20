@@ -42,9 +42,15 @@
         <%= link_to 'YÖNETİCİ GİRİŞİ', admins_path, class: "mdl-layout__tab is-active"%>
       </div>
     </header>
-
-
-
+    <% if admin_signed_in? %>
+    <div class="mdl-layout__drawer adminpanel">
+      <span class="mdl-layout-title">PANEL</span>
+      <nav class="mdl-navigation">
+        <a class="adminbtn" href="">Anketler</a>
+        <a class="adminbtn" href="">Raporlar</a>
+      </nav>
+    </div>
+    <% end %>
     <main class="mdl-layout__content">
       <center><%= yield %></center>
     </main>
