@@ -18,7 +18,7 @@
   <link rel="shortcut icon" href="images/favicon.png">
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    rel="stylesheet">
+  rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'material.min', media: 'all', 'data-turbolinks-track' => true %>
 
@@ -30,31 +30,25 @@
 <body>
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
-       <!-- Top row, always visible -->
-       <div class="mdl-layout__header-row">
-       <!-- Title -->
-          <span class="mdl-layout-title">Anket Sistemi</span>
-       </div>
-       <!-- Tabs -->
-       <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-          <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Tab 1</a>
-          <a href="#scroll-tab-2" class="mdl-layout__tab">Tab 2</a>
-          <a href="#scroll-tab-3" class="mdl-layout__tab">Tab 3</a>
-       </div>
+      <!-- Top row, always visible -->
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">Anket Sistemi</span>
+      </div>
+      <!-- Tabs -->
+      <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+        <%= link_to 'ANKET GİRİŞİ', home_index_path, class: "mdl-layout__tab is-active"%>
+        <%= link_to 'HAKKINDA', about_path, class: "mdl-layout__tab is-active"%>
+        <%= link_to 'YÖNETİCİ GİRİŞİ', admins_path, class: "mdl-layout__tab is-active"%>
+      </div>
     </header>
-    <% if admin_signed_in? %>
-    <div class="mdl-layout__drawer">
-       <span class="mdl-layout-title">Menü</span>
-       <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="">Home</a>
-          <a class="mdl-navigation__link" href="">About</a>
-       </nav>
-    </div>
-    <% end %>
+
+
+
     <main class="mdl-layout__content">
-            <center><%= yield %></center>
+      <center><%= yield %></center>
     </main>
- </div>
+  </div>
 
 
 
