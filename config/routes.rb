@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :admins, controllers: { sessions: 'sessions'}
+  devise_for :admins, controllers: {sessions: "admin/sessions"}
+  # resources :admins
   resources :pass_codes
   resources :questions
   resources :answers
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
   get 'about', to: "home#about"
   root to: "home#index"
   resources :polls
-  resources :admins
+  get 'admin_panel', to: "admin_panel#index"
   resources :users
 
 end
