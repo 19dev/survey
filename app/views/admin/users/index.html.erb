@@ -16,9 +16,9 @@
       <tr>
         <td><%= admin.email %></td>
         <td><%= admin.sign_in_count %></td>
-        <td><%= link_to 'Göster', user_path(admin) %></td>
-        <td><%= link_to 'Düzenle', edit_user_path(admin) %></td>
-        <td><%= link_to 'Sil', users_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Göster', admin_user_path(admin) %></td>
+        <td><%= link_to 'Düzenle', edit_admin_user_path(admin) %></td>
+        <td><%= link_to 'Sil', admin_user_path(admin), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'Yeni Admin Ekle', new_user_path %>
+<%= link_to 'Yeni Admin Ekle', new_admin_user_path %>
