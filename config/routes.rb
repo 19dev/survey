@@ -7,5 +7,10 @@ Rails.application.routes.draw do
   get 'about', to: "home#about"
   root to: "home#index"
   resources :polls
-  resources :admins
+  resources :admins do
+    resources :users , except: [:show] do
+      get :add_admin, on: :member
+      get :delete_admin, on: :member
+    end
+  end
 end
