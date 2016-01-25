@@ -16,6 +16,11 @@
     <%= f.text_area :answer_image %>
   </div>
   <div class="field">
+  <%= form_for @answer, url: answers_path, html: { multipart: true } do |form| %>
+  <%= form.file_field :img %>
+<% end %>
+</div>
+  <div class="field">
     <%= f.label :question_id %><br>
     <%= f.number_field :question_id %>
   </div>
