@@ -18,8 +18,8 @@
       <tr>
         <td class="mdl-data-table__cell--non-numeric"><%= poll.poll_name %></td>
         <td class="mdl-data-table__cell--non-numeric"><%= poll.poll_description %></td>
-        <td class="mdl-data-table__cell--non-numeric"><%= poll.poll_start_date %></td>
-        <td class="mdl-data-table__cell--non-numeric"><%= poll.poll_finish_date %></td>
+        <td><%= poll.poll_start_date %></td>
+        <td><%= poll.poll_finish_date %></td>
         <td class="mdl-data-table__cell--non-numeric"><%= link_to 'GÖSTER', poll, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
         <td class="mdl-data-table__cell--non-numeric"><%= link_to 'DÜZENLE', edit_poll_path(poll), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
         <td class="mdl-data-table__cell--non-numeric"><%= link_to 'SİL', poll, method: :delete, data: { confirm: 'Anket silinecek! Emin misiniz ?' }, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
