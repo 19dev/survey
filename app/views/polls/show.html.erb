@@ -1,25 +1,59 @@
 
 
 <p>
-  <strong>Poll name:</strong>
+  <strong>Anket Adı:</strong>
   <%= @poll.poll_name %>
 </p>
 
 <p>
-  <strong>Poll description:</strong>
+  <strong>Açıklaması:</strong>
   <%= @poll.poll_description %>
-  
+
 </p>
 
 <p>
-  <strong>Poll start date:</strong>
+  <strong>Başlama Tarihi:</strong>
   <%= @poll.poll_start_date %>
 </p>
 
 <p>
-  <strong>Poll finish date:</strong>
+  <strong>Bitiş Tarihi:</strong>
   <%= @poll.poll_finish_date %>
 </p>
 
-<%= link_to 'Edit', edit_poll_path(@poll) %> |
-<%= link_to 'Back', polls_path %>
+<h2>SORULAR</h2>
+<% if @poll_questions.length != 0 %>
+<table class="mdl-data-table mdl-js-data-table">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Soru</th>
+      <th class="mdl-data-table__cell--non-numeric" colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @poll_questions.each do |poll_question| %>
+      <tr>
+        <td class="mdl-data-table__cell--non-numeric"><%= poll_question.question_header %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'GÖSTER', poll_question, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'DÜZENLE', edit_poll_path(poll_question), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'SİL', poll_question, method: :delete, data: { confirm: 'Soru silinecek! Emin misiniz ?' }, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <p>
+    Bu ankette hiç bir soru bulunmuyor !
+  </p>
+<% end %>
+<div>
+  <%= link_to 'ANKETE SORU EKLE', new_question_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
+
+</div>
+</br>
+<div>
+  <%= link_to 'ANKETİ DÜZENLE', edit_poll_path(@poll), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" %> |
+  <%= link_to 'GERİ', polls_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" %>
+
+</div>
