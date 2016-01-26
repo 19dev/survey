@@ -11,23 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :poll_name %><br>
-    <%= f.text_field :poll_name %>
+<div class="mdl-grid" style="width: 40%">
+  <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+    <%= f.label :poll_name, class: "mdl-textfield__label" %><br>
+    <%= f.text_field :poll_name, class: "mdl-textfield__input" %>
   </div>
-  <div class="field">
-    <%= f.label :poll_description %><br>
-    <%= f.text_field :poll_description %>
+  <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+    <%= f.label :poll_description, class: "mdl-textfield__label" %><br>
+    <%= f.text_field :poll_description, class: "mdl-textfield__input" %>
   </div>
-  <div class="field">
-    <%= f.label :poll_start_date %><br>
+  <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+    <%= f.label :poll_start_date, class: "mdl-textfield__label" %><br>
     <%= f.datetime_select :poll_start_date %>
   </div>
-  <div class="field">
-    <%= f.label :poll_finish_date %><br>
+  <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+    <%= f.label :poll_finish_date, class: "mdl-textfield__label" %><br>
     <%= f.datetime_select :poll_finish_date %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions mdl-cell mdl-cell--12-col">
+    <%= f.submit "KAYDET", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect"%>
   </div>
+</div>
 <% end %>
