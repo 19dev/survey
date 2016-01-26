@@ -2,28 +2,27 @@
 
 <h2>ANKETLER</h2>
 
-<table>
+<table class="mdl-data-table mdl-js-data-table">
   <thead>
     <tr>
-      <th>AD</th>
-      <th>AÇIKLAMA</th>
-      <th>BAŞLAMA TARİHİ</th>
-      <th>BİTİŞ TARİHİ</th>
-      <th colspan="3"></th>
+      <th class="mdl-data-table__cell--non-numeric">AD</th>
+      <th class="mdl-data-table__cell--non-numeric">AÇIKLAMA</th>
+      <th class="mdl-data-table__cell--non-numeric">BAŞLAMA TARİHİ</th>
+      <th class="mdl-data-table__cell--non-numeric">BİTİŞ TARİHİ</th>
+      <th class="mdl-data-table__cell--non-numeric" colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @polls.each do |poll| %>
       <tr>
-
-        <td><%= poll.poll_name %></td>
-        <td><%= poll.poll_description %></td>
-        <td><%= poll.poll_start_date %></td>
-        <td><%= poll.poll_finish_date %></td>
-        <td><%= link_to 'Show', poll %></td>
-        <td><%= link_to 'Edit', edit_poll_path(poll) %></td>
-        <td><%= link_to 'Destroy', poll, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= poll.poll_name %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= poll.poll_description %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= poll.poll_start_date %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= poll.poll_finish_date %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'GÖSTER', poll, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'DÜZENLE', edit_poll_path(poll), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'SİL', poll, method: :delete, data: { confirm: 'Anket silinecek! Emin misiniz ?' }, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -31,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Poll', new_poll_path %>
+<%= link_to 'ANKET EKLE', new_poll_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" %>
