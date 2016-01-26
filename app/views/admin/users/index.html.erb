@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Adminler</h1>
+<h2>YÖNETİCİLER</h2>
 
-<table>
+<table class="mdl-data-table mdl-js-data-table">
   <thead>
     <tr>
-      <th>E-Mail</th>
-      <th>Giriş Sayısı</th>
-      <th colspan="2"></th>
+      <th class="mdl-data-table__cell--non-numeric">E-Mail</th>
+      <th class="mdl-data-table__cell--non-numeric">Girişler</th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |admin| %>
       <tr>
-        <td><%= admin.email %></td>
-        <td><%= admin.sign_in_count %></td>
-        <td><%= link_to 'Göster', admin_user_path(admin) %></td>
-        <td><%= link_to 'Düzenle', edit_admin_user_path(admin) %></td>
-        <td><%= link_to 'Sil', admin_user_path(admin), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= admin.email %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= admin.sign_in_count %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'GÖSTER', admin_user_path(admin), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'DÜZENLE', edit_admin_user_path(admin), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'SİL', admin_user_path(admin), method: :delete, data: { confirm: 'Are you sure?' }, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'Yeni Admin Ekle', new_admin_user_path %>
+<%= link_to 'YÖNETİCİ EKLE', new_admin_user_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %>
