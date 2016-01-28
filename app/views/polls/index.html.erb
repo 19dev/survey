@@ -1,6 +1,7 @@
 
 
 <h2>ANKETLER</h2>
+<% if @polls.length != 0 %>
 
 <table class="mdl-data-table mdl-js-data-table">
   <thead>
@@ -27,7 +28,11 @@
     <% end %>
   </tbody>
 </table>
-
+<% else %>
+  <p>
+    Sistemde hiç bir anket kayıtlı değil !
+  </p>
+<% end %>
 <br>
 
 <%= link_to 'ANKET EKLE', new_poll_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
