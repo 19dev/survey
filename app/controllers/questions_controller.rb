@@ -7,6 +7,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @question_answers = Question.find(params[:id]).answers
   end
 
   def new
@@ -20,7 +21,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     respond_to do |format|
       if @question.save
-        format.html { redirect_to questions_url, notice: 'Soru eklendi.' }
+        format.html { redirect_to @question, notice: 'Soru eklendi.' }
         format.json { render :show, status: :created, location: @question }
       else
         format.html { render :new }
@@ -44,7 +45,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     respond_to do |format|
-      format.html { redirect_to questions_url, notice: 'Soru silindi' }
+      format.html { redirect_to poll_path(@question.poll_id), notice: 'Soru silindi' }
       format.json { head :no_content }
     end
   end
