@@ -18,10 +18,9 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    @poll = Poll.find(params[:poll_id])
     respond_to do |format|
       if @question.save
-        format.html { redirect_to poll_url(@pool), notice: 'Soru eklendi.' }
+        format.html { redirect_to questions_url, notice: 'Soru eklendi.' }
         format.json { render :show, status: :created, location: @question }
       else
         format.html { render :new }
@@ -56,6 +55,6 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:question_header, :poll_id)
+      params.require(:question).permit(:question_header, :poll_id,:poll)
     end
 end

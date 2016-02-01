@@ -16,10 +16,9 @@
     <%= f.label "Soru", class: "mdl-textfield__label" %><br>
     <%= f.text_area :question_header, class: "mdl-textfield__input" %>
   </div>
-  <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-    <%= f.label :poll_id, class: "mdl-textfield__label" %><br>
-    <%= f.number_field :poll_id, class: "mdl-textfield__input" %>
-  </div>
+  <%= f.hidden_field :poll_id, :value => params[:poll]%>
+      <%=  params[:poll] %>zas
+
   <div  class="actions mdl-cell mdl-cell--12-col">
     <%= f.submit "KAYDET", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect"%>
   </div>
