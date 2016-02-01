@@ -11,33 +11,34 @@
 </p>
 <h2>SEÇENEKLER</h2>
 <% if @question_answers.length != 0 %>
-<table class="mdl-data-table mdl-js-data-table">
-  <thead>
-    <tr>
-      <th class="mdl-data-table__cell--non-numeric">Seçenek</th>
-      <th class="mdl-data-table__cell--non-numeric" colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @question_answers.each do |question_answer| %>
-      <tr>
-        <td class="mdl-data-table__cell--non-numeric"><%= question_answer.answer_description %></td>
-        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'GÖSTER', question_answer, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
-        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'DÜZENLE', edit_question_path(question_answer), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
-        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'SİL', question_answer, method: :delete, data: { confirm: 'Seçenek silinecek! Emin misiniz ?' }, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
-      </tr>
+<% @question_answers.each do |question_answer| %>
+<div class="mdl-grid ">
+  
+    <div class="mdl-cell--6-col answer mdl-grid">
+      <div class="mdl-cell mdl-cell--10-col"><%= image_tag question_answer.img.url, class:"answer_img",style:"width: 90%"%>
+        </br>
+          <%= question_answer. answer_description %>
+      </div>
+      <div class="mdl-cell mdl-cell--2-col">
+          <%= link_to 'GÖSTER', question_answer, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></br>
+          <%= link_to 'DÜZENLE', edit_answer_path(question_answer), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></br>
+          <%= link_to 'SİL', question_answer, method: :delete, data: { confirm: 'Seçenek silinecek! Emin misiniz ?' }, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" %>
+      </div>
+  </div>
+</div>
     <% end %>
-  </tbody>
-</table>
+    
+ 
+
 <% else %>
   <p>
-    Bu sorude hiç bir seçenek bulunmuyor !
+    Bu soruda hiç bir seçenek bulunmuyor !
   </p>
 <% end %>
 <div>
   </br>
-  <%= link_to 'SEÇENEK EKLE', new_answer_path(:questiın => @question.id), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
+  <%= link_to 'SEÇENEK EKLE', new_answer_path(:question => @question.id), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
     
 </div>
 <%= link_to 'Edit', edit_question_path(@question) %> |

@@ -11,20 +11,17 @@
     </div>
   <% end %>
 
-
-  <div class="field">
-
-  <%= f.file_field :img %>
-</div>
-  <div class="field">
-    <%= f.label :question_id %><br>
-    <%= f.number_field :question_id %>
+<div class="mdl-grid" style="width: 40%">
+  <div class="field mdl-cell mdl-cell--12-col">
+    <%= f.file_field :img %>
   </div>
-  <div class="field">
-    <%= f.label :answer_description %><br>
-    <%= f.text_area :answer_description %>
+  <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+    <%= f.label :answer_description, class: "mdl-textfield__label"  %><br>
+    <%= f.text_area :answer_description , class: "mdl-textfield__input" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <%= f.hidden_field :question_id, :value => params[:question]%>
+  <div class="actions mdl-cell mdl-cell--12-col">
+    <%= f.submit "Kaydet", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
+  </div>
   </div>
 <% end %>

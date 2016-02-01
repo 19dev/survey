@@ -34,3 +34,18 @@
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
 }
+.answer_img{
+
+  border-radius: 10px;
+  border:5px solid #64DD17;
+}
+.answer{
+  border-radius: 15px;
+  background: #F4511E;  
+  border:5px solid #64DD17;
+}
+.answer .mdl-button{
+  background: #E0E0E0 !important;
+  margin:2px;
+
+}
