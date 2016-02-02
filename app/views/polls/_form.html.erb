@@ -1,35 +1,32 @@
-<%= form_for(@poll) do |f| %>
-  <% if @poll.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@poll.errors.count, "error") %> prohibited this poll from being saved:</h2>
-
-      <ul>
-      <% @poll.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <%= simple_form_for @poll do |f| %>
+    <div class="mdl-grid" style="width: 40%">
+      <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col ">
+        <%= f.input :poll_name,input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"} %>
+      </div>
+      <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+        <%= f.input :poll_description, input_html: { class: "mdl-textfield__input"},label_html:{class: "mdl-textfield__label"} %>
+      </div>
+      <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+        <%= f.input :poll_start_date %>
+      </div>
+      <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+        <%= f.input :poll_finish_date %>
+      </div>
+      <div id='questions'>
+        <%= f.simple_fields_for :questions do |question| %>
+        </br>
+          <%= render 'question_fields', :f => question %>
+        <% end %>
+        <div class='links'>
+          <%= link_to_add_association 'add question', f, :questions %>
+        </div>
     </div>
-  <% end %>
 
-<div class="mdl-grid" style="width: 40%">
-  <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-    <%= f.label :poll_name, class: "mdl-textfield__label" %><br>
-    <%= f.text_field :poll_name, class: "mdl-textfield__input" %>
+
+
+    <div class="actions mdl-cell mdl-cell--12-col">
+      
+        <%= f.submit 'Save', class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
+    </div>
   </div>
-  <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-    <%= f.label :poll_description, class: "mdl-textfield__label" %><br>
-    <%= f.text_field :poll_description, class: "mdl-textfield__input" %>
-  </div>
-  <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-    <%= f.label :poll_start_date, class: "mdl-textfield__label" %><br>
-    <%= f.datetime_select :poll_start_date %>
-  </div>
-  <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-    <%= f.label :poll_finish_date, class: "mdl-textfield__label" %><br>
-    <%= f.datetime_select :poll_finish_date %>
-  </div>
-  <div class="actions mdl-cell mdl-cell--12-col">
-    <%= f.submit "KAYDET", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect"%>
-  </div>
-</div>
 <% end %>

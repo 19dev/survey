@@ -41,11 +41,20 @@
 }
 .answer{
   border-radius: 15px;
-  background: #F4511E;  
+  background: #3f51b5;  
   border:5px solid #64DD17;
 }
 .answer .mdl-button{
   background: #E0E0E0 !important;
   margin:2px;
 
+}
+.demo-card-square.mdl-card {
+  width: 320px;
+  height: 320px;
+}
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  padding:0px !important;
+    
 }
