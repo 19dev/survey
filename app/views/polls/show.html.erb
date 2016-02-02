@@ -47,14 +47,10 @@
     Bu ankette hiç bir soru bulunmuyor !
   </p>
 <% end %>
-<div>
-  </br>
-  <%= link_to 'ANKETE SORU EKLE', new_question_path(:poll => @poll.id), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
-    
-</div>
+
 </br>
 <div>
-  <%= link_to 'ANKETİ DÜZENLE', edit_poll_path(@poll), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" %> |
-  <%= link_to 'GERİ', polls_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" %>
+  <%= link_to 'ANKETİ DÜZENLE', edit_poll_path(@poll), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+  <%= link_to 'GERİ', polls_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
 
 </div>

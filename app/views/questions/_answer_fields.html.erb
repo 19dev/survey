@@ -1,0 +1,13 @@
+ <div class="nested-fields">
+
+   <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+     <%= f.input :answer_description, input_html: { class: "mdl-textfield__input"},
+	 	 label_html:{class: "mdl-textfield__label"} %>
+   </div>
+   <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+    <%= f.input :img, label: 'Resim Seç : ' %>
+  </div>
+
+ 	</br>
+ 	<%= link_to_remove_association "remove answer", f %>
+</div>

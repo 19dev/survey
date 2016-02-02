@@ -1,23 +1,18 @@
-<%= form_for(@question) do |f| %>
-  <% if @question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
-
-      <ul>
-      <% @question.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= simple_form_for @question do |f| %>
 
 <div class="mdl-grid" style="width: 40%">
   <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-    <%= f.label "Soru", class: "mdl-textfield__label" %><br>
-    <%= f.text_area :question_header, class: "mdl-textfield__input" %>
+    <%= f.input :question_header, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"} %>
   </div>
-  <%= f.hidden_field :poll_id, :value => params[:poll]%>
-      
+  <div id='answers'>
+    <%= f.simple_fields_for :answers do |answer| %>
+  </br>
+  <%= render 'answer_fields', :f => answer %>
+  <% end %>
+  <div class='links'>
+    <%= link_to_add_association 'add answer', f, :answers %>
+  </div>
+</div>
   <div  class="actions mdl-cell mdl-cell--12-col">
     <%= f.submit "KAYDET", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect"%>
   </div>
