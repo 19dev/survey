@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :home
   get 'about', to: "home#about"
   root to: "home#index"
-  resources :polls
+  resources :polls do
+      post :passCodeCreator, on: :member
+  end
   get 'records', to: "records#index"
 end

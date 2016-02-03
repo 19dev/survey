@@ -1,9 +1,23 @@
 class PollsController < ApplicationController
-  before_action :set_poll, only: [:show, :edit, :update, :destroy]
+  before_action :set_poll, only: [:show, :edit, :update, :destroy, :passCodeCreator]
   before_action :authenticate_admin!
 
-  # GET /polls
-  # GET /polls.json
+  def passCodeCreator
+    i = 0
+    while i < params[:type].to_i
+    	a = SecureRandom.hex(50)
+    	b = SecureRandom.hex(50)
+    	c = a + b
+    	d = Digest::MD5.hexdigest(c)
+    	e = PassCode.new(:passcode => d[0..9], :pass_code_is_finished => false, :poll_id => @poll.id)
+      e.save
+    	i += 1
+    end
+    flash[:notice] = 'Giriş kodları oluşturuldu'
+    redirect_to @poll
+  end
+
+
   def index
     @polls = Poll.all
   end

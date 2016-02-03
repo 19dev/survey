@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require cocoon
 //= require_tree .
+
+var pollModule = angular.module('pollModule', []);
+pollModule.controller('pollCtrl', function($scope) {
+    $scope.girisKodMiktar = 0;
+    console.log("Deneme");
+});
+
+function maxLengthCheck(object)
+  {
+    if (object.value.length > object.maxLength)
+      object.value = object.value.slice(0, object.maxLength)
+  }

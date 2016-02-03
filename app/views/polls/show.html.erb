@@ -1,4 +1,4 @@
-
+<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Anket Adı:</strong>
@@ -47,6 +47,17 @@
     Bu ankette hiç bir soru bulunmuyor !
   </p>
 <% end %>
+<div  ng-app="pollModule">
+  <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--1-col">
+    <input type="number" class="mdl-textfield__input" name="name" placeholder="Miktar" ng-model="girisKodMiktar" oninput="maxLengthCheck(this)" maxlength = "2">
+
+  </div>
+
+  <%= link_to 'GİRİŞ KODU ÜRET', URI::unescape(passCodeCreator_poll_path(:type => ('{{girisKodMiktar}}'))), method: :post,
+   class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent  mdl-cell mdl-cell--2-col" %>
+</div>
+
+
 
 </br>
 <div>
