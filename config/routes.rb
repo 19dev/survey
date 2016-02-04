@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :answers
   resources :home
   get 'about', to: "home#about"
+  get 'survey', to: "home#survey"
+  post 'survey', to: "home#survey"
   root to: "home#index"
   resources :polls do
       post :passCodeCreator, on: :member

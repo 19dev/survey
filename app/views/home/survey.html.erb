@@ -1,0 +1,41 @@
+<p><%= @pid %><p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Anket Adı:</strong>
+  <%= @poll.poll_name %>
+</p>
+
+<p>
+  <strong>Açıklaması:</strong>
+  <%= @poll.poll_description %>
+
+</p>
+<% if @poll_questions.length != 0 %>
+<table class="mdl-data-table mdl-js-data-table">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Soru</th>
+      <th class="mdl-data-table__cell--non-numeric" colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+  <%= will_paginate @poll_questions, :params => { :passcod => params[:passcod] }%>
+    <% @poll_questions.each do |poll_question| %>
+    	<% poll_question.answers.each do |question| %>
+			<%= image_tag question.img.url %>
+		<%end%>
+    <% end %>
+   <%= will_paginate @poll_questions %>
+  </tbody>
+</table>
+<% else %>
+  <p>
+    Bu ankette hiç bir soru bulunmuyor !
+  </p>
+<% end %>
+
+
+
+
+
