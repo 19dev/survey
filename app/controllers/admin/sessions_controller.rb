@@ -1,5 +1,4 @@
 class Admin::SessionsController < Devise::SessionsController
- #before_filter :configure_sign_in_params, only: [:create]
 
   def new
     super
@@ -18,6 +17,6 @@ class Admin::SessionsController < Devise::SessionsController
       admin_panel_path
     end
     def after_sign_out_path_for(resource)
-      root_path
+      new_admin_session_path
     end
 end
