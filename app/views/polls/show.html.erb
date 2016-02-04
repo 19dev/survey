@@ -1,50 +1,85 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Anket Adı:</strong>
-  <%= @poll.poll_name %>
-</p>
 
-<p>
-  <strong>Açıklaması:</strong>
-  <%= @poll.poll_description %>
+ <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+      <div class="mdl-tabs__tab-bar">
+      <a href="#lannister-panel" class="mdl-tabs__tab">ANKET BİLGİLERİ</a>
+          <a href="#starks-panel" class="mdl-tabs__tab">Sorular</a>
+          <a href="#targaryens-panel" class="mdl-tabs__tab  is-active">Giriş Kodları</a>
+      </div>
+      <div class="mdl-tabs__panel" id="lannister-panel">
+         <p>
+          <strong>Anket Adı:</strong>
+          <%= @poll.poll_name %>
+        </p>
+          <p>
+          <strong>Açıklaması:</strong>
+          <%= @poll.poll_description %>
 
-</p>
+          </p>
+          <p>
+            <strong>Başlama Tarihi:</strong>
+            <%= @poll.poll_start_date %>
+          </p>
+          <p>
+            <strong>Bitiş Tarihi:</strong>
+            <%= @poll.poll_finish_date %>
+          </p>
 
-<p>
-  <strong>Başlama Tarihi:</strong>
-  <%= @poll.poll_start_date %>
-</p>
+      </div>
+    
+      <div class="mdl-tabs__panel" id="starks-panel">
+        <% if @poll_questions.length != 0 %>
+        <table class="mdl-data-table mdl-js-data-table">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Soru</th>
+              <th class="mdl-data-table__cell--non-numeric" colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @poll_questions.each do |poll_question| %>
+              <tr>
+                <td class="mdl-data-table__cell--non-numeric"><%= link_to poll_question.question_header, poll_question  %></td>
+                <td class="mdl-data-table__cell--non-numeric"><%= link_to 'DÜZENLE', edit_question_path(poll_question), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
+                <td class="mdl-data-table__cell--non-numeric"><%= link_to 'SİL', poll_question, method: :delete, data: { confirm: 'Soru silinecek! Emin misiniz ?' }, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% else %>
+          <p>
+            Bu ankette hiç bir soru bulunmuyor !
+          </p>
+        <% end %>
+      </div>
+      <div class="mdl-tabs__panel is-active" id="targaryens-panel">
+        <% if @poll_passcodes.length != 0 %>
+        <table class="mdl-data-table mdl-js-data-table">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Giriş Kodları</th>
+            </tr>
+          </thead>
+          <tbody>
+          <%= will_paginate @poll_passcodes %>
+            <% @poll_passcodes.each do |pc| %>
+              <tr>
+                <td class="mdl-data-table__cell--non-numeric"><%=pc.passcode%></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <% else %>
+          <p>
+            Bu ankette hiç bir soru bulunmuyor !
+          </p>
+        <% end %>
 
-<p>
-  <strong>Bitiş Tarihi:</strong>
-  <%= @poll.poll_finish_date %>
-</p>
+      </div>
+    </div>
 
-<h2>SORULAR</h2>
-<% if @poll_questions.length != 0 %>
-<table class="mdl-data-table mdl-js-data-table">
-  <thead>
-    <tr>
-      <th class="mdl-data-table__cell--non-numeric">Soru</th>
-      <th class="mdl-data-table__cell--non-numeric" colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @poll_questions.each do |poll_question| %>
-      <tr>
-        <td class="mdl-data-table__cell--non-numeric"><%= link_to poll_question.question_header, poll_question  %></td>
-        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'DÜZENLE', edit_question_path(poll_question), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
-        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'SİL', poll_question, method: :delete, data: { confirm: 'Soru silinecek! Emin misiniz ?' }, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<% else %>
-  <p>
-    Bu ankette hiç bir soru bulunmuyor !
-  </p>
-<% end %>
+
 <div  ng-app="pollModule">
   <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--1-col">
     <input type="number" class="mdl-textfield__input" name="name" placeholder="Miktar" ng-model="girisKodMiktar" oninput="maxLengthCheck(this)" maxlength = "2">

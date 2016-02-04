@@ -25,6 +25,7 @@ class PollsController < ApplicationController
   # GET /polls/1
   # GET /polls/1.json
   def show
+    @poll_passcodes= @poll.pass_codes.paginate(page: params[:page], per_page: 10)
     @poll_questions = Poll.find(params[:id]).questions
   end
 
