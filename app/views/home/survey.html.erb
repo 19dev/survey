@@ -23,7 +23,7 @@
   <%= will_paginate @poll_questions, :params => { :passcod => params[:passcod] }%>
     <% @poll_questions.each do |poll_question| %>
     	<% poll_question.answers.each do |question| %>
-			<%= image_tag question.img.url %>
+			<%= image_tag question.img.url,style:"width:30%;height:30%;"%>
 		<%end%>
     <% end %>
    <%= will_paginate @poll_questions %>
