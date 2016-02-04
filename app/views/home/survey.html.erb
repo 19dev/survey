@@ -1,4 +1,4 @@
-<p><%= @pid %><p>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -12,15 +12,8 @@
 
 </p>
 <% if @poll_questions.length != 0 %>
-<table class="mdl-data-table mdl-js-data-table">
-  <thead>
-    <tr>
-      <th class="mdl-data-table__cell--non-numeric">Soru</th>
-      <th class="mdl-data-table__cell--non-numeric" colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-  <%= will_paginate @poll_questions, :params => { :passcod => params[:passcod] }%>
+<div class="digg_pagination">
+  <%= will_paginate @poll_questions, :params => { :passcod => params[:passcod] },:page_links => false%>
     <% @poll_questions.each do |poll_question| %>
     <div class="mdl-grid">
     <% poll_question.answers.each do |question| %>
@@ -33,13 +26,13 @@
 		<%end%>
 	</div>
     <% end %>
-   <%= will_paginate @poll_questions %>
-  </tbody>
+
 </table>
 <% else %>
   <p>
     Bu ankette hiç bir soru bulunmuyor !
   </p>
+  </div>
 <% end %>
 
 
