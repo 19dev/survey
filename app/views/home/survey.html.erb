@@ -22,9 +22,16 @@
   <tbody>
   <%= will_paginate @poll_questions, :params => { :passcod => params[:passcod] }%>
     <% @poll_questions.each do |poll_question| %>
-    	<% poll_question.answers.each do |question| %>
-			<%= image_tag question.img.url,style:"width:30%;height:30%;"%>
+    <div class="mdl-grid">
+    <% poll_question.answers.each do |question| %>
+    	<div class="mdl-cell mdl-cell--6-col">  
+			<%= image_tag question.img.url,style:"width:100%;height:100%;"%>
+			<label for="chkbox1">
+		  <input type="checkbox" id="chkbox1">
+		</label>
+    	</div>
 		<%end%>
+	</div>
     <% end %>
    <%= will_paginate @poll_questions %>
   </tbody>
