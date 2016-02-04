@@ -4,17 +4,20 @@
   <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
     <%= f.input :question_header, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"} %>
   </div>
-  <div id='answers'>
+  <div class="mdl-cell mdl-cell--12-col" style="tex-align:center">
+    <h3>Seçenekler</h3>
+
+  </div>
+  <div id='answers' class=" mdl-cell--12-col">
     <%= f.simple_fields_for :answers do |answer| %>
-  </br>
-  <%= render 'answer_fields', :f => answer %>
-  <% end %>
+      <%= render 'answer_fields', :f => answer %>
+    <% end %>
   <div class='links'>
-    <%= link_to_add_association 'add answer', f, :answers %>
+    <%= link_to_add_association 'Yeni Seçenek Ekle', f, :answers %>
   </div>
 </div>
   <div  class="actions mdl-cell mdl-cell--12-col">
-    <%= f.submit "KAYDET", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect"%>
+    <%= f.submit "KAYDET", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
   </div>
 </div>
 <% end %>

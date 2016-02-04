@@ -30,12 +30,10 @@
       <th class="mdl-data-table__cell--non-numeric" colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @poll_questions.each do |poll_question| %>
       <tr>
-        <td class="mdl-data-table__cell--non-numeric"><%= poll_question.question_header %></td>
-        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'GÖSTER', poll_question, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= link_to poll_question.question_header, poll_question  %></td>
         <td class="mdl-data-table__cell--non-numeric"><%= link_to 'DÜZENLE', edit_question_path(poll_question), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
         <td class="mdl-data-table__cell--non-numeric"><%= link_to 'SİL', poll_question, method: :delete, data: { confirm: 'Soru silinecek! Emin misiniz ?' }, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
       </tr>

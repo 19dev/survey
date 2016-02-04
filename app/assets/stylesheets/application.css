@@ -8,76 +8,58 @@
 	z-index: 900;
 }
 
-	.adminpanel {
-  background-color: #b3d4fc !important;
-
-     }
-     .adminbtn {
-  background: #3F51B5;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0px;
-  border-bottom: solid #283593 2px;
-  font-family: Courier New;
-  color: #ffffff;
-  font-size: 20px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
+.adminpanel {
+	background-color: #b3d4fc !important;
+}
+.adminbtn {
+	background: #3F51B5;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0px;
+	border-bottom: solid #283593 2px;
+	font-family: Courier New;
+	color: #ffffff;
+	font-size: 20px;
+	padding: 10px 20px 10px 20px;
+	text-decoration: none;
 }
 
 .adminbtn:hover {
-  background: #3cb0fd;
-  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-  text-decoration: none;
+	background: #3cb0fd;
+	background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+	background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+	background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+	background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+	background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+	text-decoration: none;
 }
 .answer_img{
 
-  border-radius: 10px;
-  border:5px solid #64DD17;
+	border-radius: 10px;
+	border:5px solid #64DD17;
 }
 .answer{
-  border-radius: 15px;
-  background: #3f51b5;
-  border:5px solid #64DD17;
+	border-radius: 15px;
+	background: #3f51b5;
+	border:5px solid #64DD17;
 }
 .answer .mdl-button{
-  background: #E0E0E0 !important;
-  margin:2px;
+	background: #E0E0E0 !important;
+	margin:2px;
 
 }
 .demo-card-square.mdl-card {
-  width: 320px;
-  height: 320px;
+	width: 320px;
+	height: 320px;
 }
+
 .demo-card-square > .mdl-card__title {
-  color: #fff;
-  padding:0px !important;
+	color: #fff;
+	padding:0px !important;
 
 }
 
-.mdl-button--file {
-  input {
-    cursor: pointer;
-    height: 100%;
-    right: 0;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    width: 300px;
-    z-index: 4;
-  }
-}
-
-.mdl-textfield--file {
-  .mdl-textfield__input {
-    box-sizing: border-box;
-    width: calc(100% - 32px);
-  }
-  .mdl-button--file {
-    right: 0;
-  }
+.mdl-button{
+	position: absolute;
+	z-index: 5 !important;
 }
