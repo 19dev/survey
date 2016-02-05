@@ -5,6 +5,7 @@ class ReportsController < ApplicationController
 	end
 	def show
 		@poll=Poll.find(params[:id])
+		@poll_passcodes= @poll.pass_codes.paginate(page: params[:page], per_page: 10)
 	end
 	def reportpasscode
 	end

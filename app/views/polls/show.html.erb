@@ -62,12 +62,15 @@
             </tr>
           </thead>
           <tbody>
-          <%= will_paginate @poll_passcodes %>
+          <div class="digg_pagination">
+                   <%= will_paginate @poll_passcodes %>
             <% @poll_passcodes.each do |pc| %>
               <tr>
                 <td class="mdl-data-table__cell--non-numeric"><%=pc.passcode%></td>
               </tr>
             <% end %>
+          </div>
+   
           </tbody>
         </table>
         <% else %>

@@ -14,8 +14,23 @@
        		<%end%>
       </div>
       <div class="mdl-tabs__panel" id="targaryens-panel">
-      	<%@poll.pass_codes.each do |ps|%>
-      		<%=link_to ps.passcode,reportpasscode_path(:id => ps)%>
-      	<%end%>
+          <table class="mdl-data-table mdl-js-data-table">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Giriş Kodları</th>
+            </tr>
+          </thead>
+          <tbody>
+          <div class="digg_pagination">
+            <%= will_paginate @poll_passcodes%>
+              <%@poll_passcodes.each do |ps|%>
+              <tr>
+                <td class="mdl-data-table__cell--non-numeric"><%=link_to ps.passcode,reportpasscode_path(:id => ps)%></td>
+              </tr>
+            <% end %>
+          </div>
+   
+          </tbody>
+        </table>
       </div>
 
