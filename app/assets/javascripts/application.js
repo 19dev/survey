@@ -16,9 +16,50 @@
 //= require_tree .
 
 var pollModule = angular.module('pollModule', []);
-pollModule.controller('pollCtrl', function($scope) {
+
+pollModule.factory('$localstorage', ['$window', function($window) {
+  return {
+    set: function(key, value) {
+      $window.localStorage[key] = value;
+    },
+    get: function(key, defaultValue) {
+      return $window.localStorage[key] || defaultValue;
+    },
+    setObject: function(key, value) {
+      $window.localStorage[key] = JSON.stringify(value);
+    },
+    getObject: function(key) {
+      return JSON.parse($window.localStorage[key] || '{}');
+    }
+  }
+}]);
+
+pollModule.controller('pollCtrl', function($scope, $localstorage) {
     $scope.girisKodMiktar = 0;
-    console.log("Deneme");
+
+    if ($localstorage.get('firstStart') == undefined) {
+      $scope.idler = {};
+      $localstorage.set('firstStart', true);
+    }
+    else {
+      $scope.idler = $localstorage.getObject('idler');
+    }
+
+    $scope.id_ekle_cikar = function(id){
+      if ($scope.idler[id] !== true) {
+        $scope.idler[id] = true;
+        $localstorage.setObject("idler", $scope.idler);
+      }
+      else {
+        delete $scope.idler[id];
+        $localstorage.setObject("idler", $scope.idler);
+      }
+      $scope.idler_array = [];
+      angular.forEach($scope.idler, function(value, key) {
+        this.push(parseInt(key));
+      }, $scope.idler_array);
+      console.log($scope.idler_array)
+    }
 });
 
 function maxLengthCheck(object)
