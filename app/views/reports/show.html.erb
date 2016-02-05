@@ -8,6 +8,10 @@
       <div class="mdl-tabs__panel  is-active" id="lannister-panel">
       </div>
        <div class="mdl-tabs__panel" id="starks-panel">
+       		<%@poll.questions.each do |pq|%>
+       			<%=pq.question_header%>
+       			
+       		<%end%>
       </div>
       <div class="mdl-tabs__panel" id="targaryens-panel">
       	<%@poll.pass_codes.each do |ps|%>
