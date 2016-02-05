@@ -8,15 +8,17 @@ Rails.application.routes.draw do
   resources :questions
   resources :answers
   resources :home
+  resources :reports
   get 'about', to: "home#about"
   get 'survey', to: "home#survey"
   post 'survey', to: "home#survey"
   post 'record', to: "home#record"
   get 'record', to: "home#record"
+  get 'reportpasscode', to: "reports#reportpasscode"
+  post 'reportpasscode', to: "reports#reportpasscode"
 
   root to: "home#index"
   resources :polls do
       post :passCodeCreator, on: :member
   end
-  get 'records', to: "records#index"
 end

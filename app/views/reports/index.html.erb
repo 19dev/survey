@@ -1,0 +1,5 @@
+<%Poll.all.each do |r| %>
+	<%=link_to r.poll_name,report_path(r.id), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"%>
+	
+
+<%end%>

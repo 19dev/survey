@@ -53,6 +53,7 @@ class QuestionsController < ApplicationController
   private
     def set_question
       @question = Question.find_by_id(params[:id])
+      @poll=@question.poll_id
     end
 
     def question_params

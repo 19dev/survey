@@ -1,4 +1,4 @@
 class Record < ActiveRecord::Base
-  belongs_to :PassCode
-  belongs_to :Answer
+  belongs_to :pass_code
+  belongs_to :answer
 end

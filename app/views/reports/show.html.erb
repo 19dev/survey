@@ -1,0 +1,17 @@
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+      <div class="mdl-tabs__tab-bar">
+      	<a href="#lannister-panel" class="mdl-tabs__tab  is-active">ANKET BİLGİLERİ</a>
+          <a href="#starks-panel" class="mdl-tabs__tab">Sorular</a>
+          <a href="#targaryens-panel" class="mdl-tabs__tab ">Giriş Kodları</a>
+      </div>
+
+      <div class="mdl-tabs__panel  is-active" id="lannister-panel">
+      </div>
+       <div class="mdl-tabs__panel" id="starks-panel">
+      </div>
+      <div class="mdl-tabs__panel" id="targaryens-panel">
+      	<%@poll.pass_codes.each do |ps|%>
+      		<%=link_to ps.passcode,reportpasscode_path(:id => ps)%>
+      	<%end%>
+      </div>
+
