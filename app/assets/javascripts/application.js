@@ -55,6 +55,15 @@ pollModule.controller('pollCtrl', function($scope, $localstorage) {
       }, $scope.idler_array);
       console.log($scope.idler_array)
     }
+
+    $scope.surveyButtonClass = function(id){
+      if ($scope.idler[id] === true) {
+        return "clickedAnswer"
+      }
+      else {
+        return ""
+      }
+    }
 });
 
 pollModule.controller('indexCtrl', function($scope, $localstorage) {
