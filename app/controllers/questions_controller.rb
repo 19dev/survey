@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @questions = Question.all
+    redirect_to home_index_path
   end
 
   def show

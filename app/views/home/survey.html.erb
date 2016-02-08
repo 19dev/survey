@@ -16,8 +16,9 @@
 
   <div class="digg_pagination" data-ng-init="idlerSenkron()">
     <%= will_paginate @poll_questions, :params => { :passcod => params[:passcod] },:page_links => false%>
-    <% @poll_questions.each do |poll_question| %>
     <div class="mdl-grid">
+    <% @poll_questions.each do |poll_question| %>
+
       <div class="mdl-cell mdl-cell--12-col">
         <p>
           <b>Soru:</b> <%= poll_question.question_header %>
@@ -26,14 +27,19 @@
       <div class="mdl-cell mdl-cell--12-col">
 
         <% poll_question.answers.each do |answer| %>
-        <button class="mdl-cell mdl-cell--6-col" ng-click="id_ekle_cikar(<%= answer.id %>)" ng-class="surveyButtonClass(<%= answer.id %>)"><%= image_tag answer.img.url,style:"width:50%;height:50%;"%></button>
+        <button class="mdl-cell mdl-cell--5-col" ng-click="id_ekle_cikar(<%= answer.id %>)" ng-class="surveyButtonClass(<%= answer.id %>)">
+          <%= image_tag answer.img.url,style:"width:50%;height:50%;"%>
+          <p style="border-top: 3px solid #E91E63">
+            <%= answer.answer_description %>
+          </p>
+        </button>
         <%end%>
       </div>
     </div>
     <% end %>
     <%= link_to 'KAYDET VE BİTİR', URI::unescape(record_path(:idler => ('{{idler_array}}'), :passcod => params[:passcod] )), method: :post,
-    class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--2-col" %>
-    {{idler_array}}
+    class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--2-col", data: { confirm: 'Kayıtlarınız sisteme kaydedilecek ve ankete tekrar katılamayacaksınız ! Bitirmek istediğinize emin misiniz ?' } %>
+
   </table>
 
 </div>

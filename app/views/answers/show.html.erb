@@ -1,20 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Answer image:</strong>
+  <strong>Seçenek Resmi:</strong>
+</br>
   <%= image_tag @answer.img.url %>
 </p>
 
-
 <p>
-  <strong>Question Id:</strong>
-  <%= @answer.question_id %>
-</p>
-
-<p>
-  <strong>Answer description:</strong>
+  <strong>Açıklama:</strong>
   <%= @answer.answer_description %>
 </p>
 
-<%= link_to 'Edit', edit_answer_path(@answer) %> |
-<%= link_to 'Back', question_path(@question) %>
+<%= link_to 'DÜZENLE', edit_answer_path(@answer), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
+<%= link_to 'GERİ', question_path(@question), class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>

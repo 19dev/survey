@@ -1,19 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Question header:</strong>
+  <strong>Soru :</strong>
   <%= @question.question_header %>
 </p>
 
-<p>
-  <strong>Poll Id:</strong>
-  <%= @question.poll_id %>
-</p>
 <h2>SEÇENEKLER</h2>
 <% if @question_answers.length != 0 %>
-
-
-
 
     <% @question_answers.each do |question_answer| %>
     <div class="demo-card-square mdl-card mdl-shadow--2dp">
