@@ -1,36 +1,60 @@
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
       <div class="mdl-tabs__tab-bar">
-      	<a href="#lannister-panel" class="mdl-tabs__tab  is-active">ANKET BİLGİLERİ</a>
+      	<a href="#lannister-panel" class="mdl-tabs__tab ">ANKET BİLGİLERİ</a>
           <a href="#starks-panel" class="mdl-tabs__tab">Sorular</a>
-          <a href="#targaryens-panel" class="mdl-tabs__tab ">Giriş Kodları</a>
+          <a href="#targaryens-panel" class="mdl-tabs__tab  is-active">Giriş Kodları</a>
       </div>
 
-      <div class="mdl-tabs__panel  is-active" id="lannister-panel">
+      <div class="mdl-tabs__panel" id="lannister-panel">
 
           <%c=0%>
-          <p>Anket adı : <%=@poll.poll_name%></p>
-          <p>Soru Sayısı : <%=@poll.questions.count%>
-          <p>Çözülmeyi bekleyen giriş kod sayisi : <%=@poll.pass_codes.count%>
           <%@poll.pass_codes.each do |ps|%>
-
-            <% ps.records.each do |psr|%>
+              
+            <%if ps.pass_code_is_finished %>
               <%c=c+1%>
             <%end%>
 
           <%end%>
+          <p>Anket adı : <%=@poll.poll_name%></p>
+          <p>Anket açıklaması : <%=@poll.poll_description%></p>
+          <p>Soru Sayısı : <%=@poll.questions.count%>
+          <p>Kullanılmamış giriş kodu sayısı : <%=@poll.pass_codes.count-c%>
+          
         <p>Cevaplayan Kişi Sayısı : <%=c%></p>
 
         <p>Başlangıç Tarihi :<%=@poll.poll_start_date.strftime("%Y-%m-%d | %H:%M")%></p>
         <p>Bitiş Tarihi :<%=@poll.poll_finish_date.strftime("%Y-%m-%d | %H:%M")%></p>
 
       </div>
+
        <div class="mdl-tabs__panel" id="starks-panel">
-       		<%@poll.questions.each do |pq|%>
-       			<%=pq.question_header%>
-       			
+          <%d=0%>
+       		<%@questions.each do |pq|%> 
+          <%d=d+1%>
+            <h3>Soru <%=d%> : <%=pq.question_header%></h3>
+              <div class=" mdl-grid ">
+              <%pq.answers.each do |pqa|%>
+                    <div class="mdl-cell mdl-cell--2-col"></div>
+                    <div class="demo-card-square mdl-card mdl-shadow--2dp mdl-cell mdl-cell--2-col">
+                        <%= image_tag pqa.img.url,style:"width: 100%;height:70%;"%>
+                      <div class="mdl-card__title mdl-card--expand">
+
+                      </div>
+                      <div class="mdl-card__supporting-text">
+                        <p>Cevap Açıklama : <%= pqa.answer_description %></p>
+                        
+                      </div>
+                      <div class="mdl-card__actions mdl-card--border">
+                      <p>Seçilme Sayısı : <%=pqa.records.count%></p>
+                      </div>
+                   </div>
+                   
+              <%end%>
+              </div>
        		<%end%>
       </div>
-      <div class="mdl-tabs__panel" id="targaryens-panel">
+
+      <div class="mdl-tabs__panel  is-active" id="targaryens-panel">
           <table class="mdl-data-table mdl-js-data-table">
           <thead>
             <tr>
@@ -40,7 +64,7 @@
           </thead>
           <tbody>
           <div class="digg_pagination">
-            <%= will_paginate @poll_passcodes%>
+            <%= will_paginate @poll_passcodes%></br>
               <%@poll_passcodes.each do |ps|%>
               <tr>
                 <td class="mdl-data-table__cell--non-numeric"><%=link_to ps.passcode,reportpasscode_path(:id => ps)%></td>
