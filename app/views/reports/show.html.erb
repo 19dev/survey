@@ -6,6 +6,23 @@
       </div>
 
       <div class="mdl-tabs__panel  is-active" id="lannister-panel">
+
+          <%c=0%>
+          <p>Anket adı : <%=@poll.poll_name%></p>
+          <p>Soru Sayısı : <%=@poll.questions.count%>
+          <p>Çözülmeyi bekleyen giriş kod sayisi : <%=@poll.pass_codes.count%>
+          <%@poll.pass_codes.each do |ps|%>
+
+            <% ps.records.each do |psr|%>
+              <%c=c+1%>
+            <%end%>
+
+          <%end%>
+        <p>Cevaplayan Kişi Sayısı : <%=c%></p>
+
+        <p>Başlangıç Tarihi :<%=@poll.poll_start_date.strftime("%Y-%m-%d | %H:%M")%></p>
+        <p>Bitiş Tarihi :<%=@poll.poll_finish_date.strftime("%Y-%m-%d | %H:%M")%></p>
+
       </div>
        <div class="mdl-tabs__panel" id="starks-panel">
        		<%@poll.questions.each do |pq|%>
