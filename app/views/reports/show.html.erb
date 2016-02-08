@@ -35,6 +35,7 @@
           <thead>
             <tr>
               <th class="mdl-data-table__cell--non-numeric">Giriş Kodları</th>
+              <th class="mdl-data-table__cell--non-numeric">Bitirdi</th>
             </tr>
           </thead>
           <tbody>
@@ -43,6 +44,13 @@
               <%@poll_passcodes.each do |ps|%>
               <tr>
                 <td class="mdl-data-table__cell--non-numeric"><%=link_to ps.passcode,reportpasscode_path(:id => ps)%></td>
+                <td class="mdl-data-table__cell--non-numeric">
+                  <%if ps.pass_code_is_finished%>
+                    <i class="material-icons">done</i>
+                  <%else%>
+                  <i class="material-icons">highlight_off</i>
+                  <%end%>
+                </td>
               </tr>
             <% end %>
           </div>
