@@ -27,8 +27,8 @@
       <div class="mdl-cell mdl-cell--12-col">
 
         <% poll_question.answers.each do |answer| %>
-        <button class="mdl-cell mdl-cell--5-col" ng-click="id_ekle_cikar(<%= answer.id %>)" ng-class="surveyButtonClass(<%= answer.id %>)">
-          <%= image_tag answer.img.url,style:"width:50%;height:50%;"%>
+        <button class="mdl-cell mdl-cell--5-col surveyanswerbutton" ng-click="id_ekle_cikar(<%= answer.id %>)" ng-class="surveyButtonClass(<%= answer.id %>)">
+          <%= image_tag answer.img.url,class:"surveyanswerimage"%>
           <p style="border-top: 3px solid #E91E63">
             <%= answer.answer_description %>
           </p>

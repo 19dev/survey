@@ -114,3 +114,12 @@
 .clickedAnswer{
 	background-color: #64B5F6;
 }
+
+.surveyanswerbutton{
+  padding:0px !important
+}
+.surveyanswerimage{
+  width:100%;
+  height:100%;
+  padding-bottom:5px;
+}
