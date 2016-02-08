@@ -35,9 +35,17 @@ pollModule.factory('$localstorage', ['$window', function($window) {
 }]);
 
 pollModule.controller('pollCtrl', function($scope, $localstorage) {
-    $scope.girisKodMiktar = 0;
 
-    $scope.idler = $localstorage.getObject('idler') || {};
+    $scope.girisKodMiktar = 0;
+    $scope.idlerSenkron = function() {
+      $scope.idler = $localstorage.getObject('idler') || {};
+      $scope.idler_array = [];
+      angular.forEach($scope.idler, function(value, key) {
+        this.push(parseInt(key));
+      }, $scope.idler_array);
+    };
+
+    $scope.idlerSenkron();
 
 
     $scope.id_ekle_cikar = function(id){
@@ -53,7 +61,6 @@ pollModule.controller('pollCtrl', function($scope, $localstorage) {
       angular.forEach($scope.idler, function(value, key) {
         this.push(parseInt(key));
       }, $scope.idler_array);
-      console.log($scope.idler_array)
     }
 
     $scope.surveyButtonClass = function(id){
