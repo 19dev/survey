@@ -9,6 +9,9 @@ class ReportsController < ApplicationController
 	end
 	def reportpasscode
 	end
+
+
+
 	private
 	    def set_report
 	    end
