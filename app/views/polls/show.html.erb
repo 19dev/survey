@@ -1,12 +1,11 @@
 <p id="notice"><%= notice %></p>
-
-
  <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
       <div class="mdl-tabs__tab-bar">
       <a href="#lannister-panel" class="mdl-tabs__tab">ANKET BİLGİLERİ</a>
-          <a href="#starks-panel" class="mdl-tabs__tab">Sorular</a>
-          <a href="#targaryens-panel" class="mdl-tabs__tab  is-active">Giriş Kodları</a>
+          <a href="#starks-panel" class="mdl-tabs__tab">SORULAR</a>
+          <a href="#targaryens-panel" class="mdl-tabs__tab is-active">GİRİŞ KODLARI</a>
       </div>
+        </br>
       <div class="mdl-tabs__panel" id="lannister-panel">
          <p>
           <strong>Anket Adı:</strong>
@@ -63,14 +62,15 @@
           </thead>
           <tbody>
           <div class="digg_pagination">
-                   <%= will_paginate @poll_passcodes %>
+            <%= will_paginate @poll_passcodes %>
+              </br>
             <% @poll_passcodes.each do |pc| %>
               <tr>
                 <td class="mdl-data-table__cell--non-numeric"><%=pc.passcode%></td>
               </tr>
             <% end %>
           </div>
-   
+
           </tbody>
         </table>
         <% else %>

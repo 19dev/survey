@@ -1,10 +1,11 @@
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+
       <div class="mdl-tabs__tab-bar">
       	<a href="#lannister-panel" class="mdl-tabs__tab ">ANKET BİLGİLERİ</a>
-          <a href="#starks-panel" class="mdl-tabs__tab">Sorular</a>
-          <a href="#targaryens-panel" class="mdl-tabs__tab  is-active">Giriş Kodları</a>
+          <a href="#starks-panel" class="mdl-tabs__tab">SORULARIN RAPORU</a>
+          <a href="#targaryens-panel" class="mdl-tabs__tab  is-active">GİRİŞ KODLARI</a>
       </div>
-
+  </br>
       <div class="mdl-tabs__panel" id="lannister-panel">
 
           <%c=0%>
@@ -65,6 +66,9 @@
           <tbody>
           <div class="digg_pagination">
             <%= will_paginate @poll_passcodes%></br>
+            <p>
+              Giriş kodlarına ait raporları görüntülemek için giriş kodlarına tıklayınız.
+            </p>
               <%@poll_passcodes.each do |ps|%>
               <tr>
                 <td class="mdl-data-table__cell--non-numeric"><%=link_to ps.passcode,reportpasscode_path(:id => ps)%></td>
