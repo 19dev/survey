@@ -12,6 +12,9 @@ class HomeController < ApplicationController
 		@idler.each do |id|
 			Record.create(:pass_code_id => @pass_code_id, :answer_id => id)
 		end
+		pass_code = PassCode.find(@pass_code_id)
+		pass_code.pass_code_is_finished = true
+		pass_code.save
 		flash[:notice]="Anket cevaplarınız kaydedildi."
 		redirect_to home_index_path
 	end
