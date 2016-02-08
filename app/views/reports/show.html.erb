@@ -9,7 +9,7 @@
 
           <%c=0%>
           <%@poll.pass_codes.each do |ps|%>
-              
+
             <%if ps.pass_code_is_finished %>
               <%c=c+1%>
             <%end%>
@@ -19,7 +19,7 @@
           <p>Anket açıklaması : <%=@poll.poll_description%></p>
           <p>Soru Sayısı : <%=@poll.questions.count%>
           <p>Kullanılmamış giriş kodu sayısı : <%=@poll.pass_codes.count-c%>
-          
+
         <p>Cevaplayan Kişi Sayısı : <%=c%></p>
 
         <p>Başlangıç Tarihi :<%=@poll.poll_start_date.strftime("%Y-%m-%d | %H:%M")%></p>
@@ -29,7 +29,7 @@
 
        <div class="mdl-tabs__panel" id="starks-panel">
           <%d=0%>
-       		<%@questions.each do |pq|%> 
+       		<%@questions.each do |pq|%>
           <%d=d+1%>
             <h3>Soru <%=d%> : <%=pq.question_header%></h3>
               <div class=" mdl-grid ">
@@ -41,14 +41,14 @@
 
                       </div>
                       <div class="mdl-card__supporting-text">
-                        <p>Cevap Açıklama : <%= pqa.answer_description %></p>
-                        
+                        <p><b>Cevap Açıklama :</b>  <%= pqa.answer_description %></p>
+
                       </div>
                       <div class="mdl-card__actions mdl-card--border">
                       <p>Seçilme Sayısı : <%=pqa.records.count%></p>
                       </div>
                    </div>
-                   
+
               <%end%>
               </div>
        		<%end%>
@@ -78,8 +78,7 @@
               </tr>
             <% end %>
           </div>
-   
+
           </tbody>
         </table>
       </div>
-
