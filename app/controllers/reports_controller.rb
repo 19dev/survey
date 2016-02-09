@@ -1,7 +1,7 @@
 class ReportsController < ApplicationController
 	 before_action :set_report, only: [:show, :index, :reportpasscode]
 	def index
-
+		@polls = Poll.all.paginate(page: params[:page], per_page: 10)
 	end
 
 	def show

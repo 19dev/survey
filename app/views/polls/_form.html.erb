@@ -12,6 +12,10 @@
   <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
     <%= f.input :poll_finish_date, label: "Bitiş Zamanı : " %>
   </div>
+  <div class="mdl-cell mdl-cell--12-col" style="tex-align:center">
+    <h3>Sorular</h3>
+
+  </div>
   <div id='questions' class=" mdl-cell--12-col">
     <%= f.simple_fields_for :questions do |question| %>
   <%= render 'question_fields', :f => question %>

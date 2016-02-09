@@ -10,7 +10,8 @@
   </div>
   <div id='answers' class=" mdl-cell--12-col">
     <%= f.simple_fields_for :answers do |answer| %>
-      <%= render 'answer_fields', :f => answer %>
+    <%= render 'answer_fields', :f => answer %>
+
     <% end %>
   <div class='links'>
     <%= link_to_add_association '+ Yeni Seçenek Ekle', f, :answers %>

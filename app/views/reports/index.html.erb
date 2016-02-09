@@ -1,7 +1,29 @@
-<p>Cevaplanmış Anketler</p>
+<% if Poll.all.length != 0 %>
+<table class="mdl-data-table mdl-js-data-table">
+	<thead>
+		<tr>
+			<th class="mdl-data-table__cell--non-numeric">Cevaplanmış Anketler</th>
+		</tr>
+	</thead>
+	<tbody>
+	<div class="digg_pagination">
+		<%= will_paginate @polls %>
+			</br>
+		<% @polls.each do |poll| %>
+		<%if doespollhaverecords(poll.id)==true %>
+			<tr>
+				<td class="mdl-data-table__cell--non-numeric">
+						<%=link_to poll.poll_name,report_path(poll.id)%>
+				</td>
+			</tr>
+			<%end%>
+		<% end %>
+	</div>
 
-<%Poll.all.each do |r| %>
-	<%if doespollhaverecords(r.id)==true %>
-			<%=link_to r.poll_name,report_path(r.id), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"%>
-	<%end%>
-<%end%>
+	</tbody>
+</table>
+<% else %>
+	<p>
+		Sistemde anket bulunmuyor !
+	</p>
+<% end %>
