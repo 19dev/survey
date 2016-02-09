@@ -2,7 +2,7 @@
 
 <div class="mdl-grid" style="width: 40%">
   <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-    <%= f.input :question_header, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"} %>
+    <%= f.input :question_header, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: "Soru" %>
   </div>
   <div class="mdl-cell mdl-cell--12-col" style="tex-align:center">
     <h3>Seçenekler</h3>
@@ -13,7 +13,7 @@
       <%= render 'answer_fields', :f => answer %>
     <% end %>
   <div class='links'>
-    <%= link_to_add_association 'Yeni Seçenek Ekle', f, :answers %>
+    <%= link_to_add_association '+ Yeni Seçenek Ekle', f, :answers %>
   </div>
 </div>
   <div  class="actions mdl-cell mdl-cell--12-col">

@@ -1,23 +1,23 @@
 <%= simple_form_for @poll do |f| %>
 <div class="mdl-grid" style="width: 40%">
   <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col ">
-    <%= f.input :poll_name, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"} %>
+    <%= f.input :poll_name, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: "Anket Adı" %>
   </div>
   <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-    <%= f.input :poll_description, input_html: { class: "mdl-textfield__input"},label_html:{class: "mdl-textfield__label"} %>
+    <%= f.input :poll_description, input_html: { class: "mdl-textfield__input"},label_html:{class: "mdl-textfield__label"}, label: "Açıklaması" %>
   </div>
   <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-    <%= f.input :poll_start_date %>
+    <%= f.input :poll_start_date, label: "Başlangıç Zamanı : " %>
   </div>
   <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-    <%= f.input :poll_finish_date %>
+    <%= f.input :poll_finish_date, label: "Bitiş Zamanı : " %>
   </div>
   <div id='questions' class=" mdl-cell--12-col">
     <%= f.simple_fields_for :questions do |question| %>
   <%= render 'question_fields', :f => question %>
   <% end %>
   <div class='links'>
-    <%= link_to_add_association 'Soru ekle', f, :questions %>
+    <%= link_to_add_association '+ Soru ekle', f, :questions %>
   </div>
 </div>
 

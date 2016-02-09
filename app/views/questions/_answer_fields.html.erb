@@ -2,14 +2,14 @@
 
   <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
      <%= f.input :answer_description, input_html: { class: "mdl-textfield__input"},
-	 	 label_html: {class: "mdl-textfield__label"} %>
+	 	 label_html: {class: "mdl-textfield__label"}, label: "Seçenek Açıklaması" %>
   </div>
 
   <div class="mdl-cell mdl-cell--12-col">
 
-    <%= f.file_field :img, label: 'Resim Seç : ', class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect', text: "deneme" %>
+    <%= f.file_field :img, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect' %>
   </div>
 
   </br>
- 	<%= link_to_remove_association "Bu seçeneği sil", f %>
+ 	<%= link_to_remove_association "- Bu seçeneği sil", f %>
 </div>
