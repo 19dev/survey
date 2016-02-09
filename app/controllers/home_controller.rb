@@ -3,8 +3,17 @@ class HomeController < ApplicationController
 	def survey
 			if @pass_code.pass_code_is_finished
 				flash[:notice]="Bu giriş kodu daha önce kullanıldı !"
-				redirect_to home_index_path
+				redirect_to home_index_path and return
 			end
+			if DateTime.now < @pass_code.poll.poll_start_date
+				flash[:notice]="Bu anket daha başlamadı !"
+				redirect_to home_index_path and return
+			end
+			if DateTime.now > @pass_code.poll.poll_finish_date
+				flash[:notice]="Bu anketin süresi doldu !"
+				redirect_to home_index_path and return
+			end
+
 			@poll = Poll.find(@pid)
 			@poll_questions = @poll.questions.all.paginate(page: params[:page], per_page: 1)
 
