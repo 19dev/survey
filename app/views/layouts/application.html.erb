@@ -7,11 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Anket Sistemi</title>
 
-  <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="icon" sizes="192x192" href="images/android-desktop.png">
 
-  <!-- Tile icon for Win8 (144x144 + tile color) -->
   <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
   <meta name="msapplication-TileColor" content="#3372DF">
 
@@ -19,8 +17,8 @@
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
   rel="stylesheet">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    'material.min', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'material.min', media: 'all', 'data-turbolinks-track' => true %>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'material.min', 'data-turbolinks-track' => true %>
@@ -30,38 +28,41 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-      <!-- Top row, always visible -->
-      <div class="mdl-layout__header-row">
-        <!-- Title -->
-        <span class="mdl-layout-title">Anket Sistemi</span>
-      </div>
-      <!-- Tabs -->
-      <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-        <%= link_to 'ANKET GİRİŞİ', home_index_path, class: "mdl-layout__tab is-active"%>
-        <%= link_to 'HAKKINDA', about_path, class: "mdl-layout__tab is-active"%>
-        <%= link_to 'YÖNETİCİ PANELİ', admin_session_path, class: "mdl-layout__tab is-active"%>
-        <% if admin_signed_in? %>
-        <%= link_to 'ÇIKIŞ', destroy_admin_session_path, class: "mdl-layout__tab is-active", method: :delete%>
-        <% end %>
-      </div>
-    </header>
-    <% if admin_signed_in? %>
-    <div class="mdl-layout__drawer adminpanel">
-      <span class="mdl-layout-title">YÖNETİCİ PANELİ</span>
-      <nav class="mdl-navigation">
-        <%= link_to 'ANKETLER', polls_path, class: "adminbtn"%>
-        <%= link_to 'RAPORLAR', reports_path, class: "adminbtn"%>
-        <%= link_to 'YÖNETİCİLER', admin_users_path, class: "adminbtn"%>
 
+
+
+  <div class="mdl-layout mdl-js-layout">
+  <header class="mdl-layout__header mdl-layout__header--scroll">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">Anket Sistemi</span>
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+        <%= link_to 'ANKET GİRİŞİ', home_index_path, class: "mdl-button mdl-js-button mdl-js-ripple-effect navigationLink"%>
+        <%= link_to 'HAKKINDA', about_path, class: "mdl-button mdl-js-button mdl-js-ripple-effect navigationLink"%>
+        <%= link_to 'YÖNETİCİ PANELİ', admin_session_path, class: "mdl-button mdl-js-button mdl-js-ripple-effect navigationLink"%>
+        <% if admin_signed_in? %>
+        <%= link_to 'ÇIKIŞ', destroy_admin_session_path, class: "mdl-button mdl-js-button mdl-js-ripple-effect navigationLink", method: :delete%>
+        <% end %>
       </nav>
     </div>
-    <% end %>
-    <main class="mdl-layout__content">
-      <center><%= yield %></center>
-    </main>
+  </header>
+  <% if admin_signed_in? %>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Menü</span>
+    <nav class="mdl-navigation">
+      <%= link_to 'ANKET GİRİŞİ', home_index_path, class: "mdl-navigation__link"%>
+      <%= link_to 'HAKKINDA', about_path, class: "mdl-navigation__link"%>
+      <%= link_to 'YÖNETİCİ PANELİ', admin_session_path, class: "mdl-navigation__link"%>
+      <% if admin_signed_in? %>
+      <%= link_to 'ÇIKIŞ', destroy_admin_session_path, class: "mdl-navigation__link", method: :delete%>
+      <% end %>
+    </nav>
   </div>
+  <% end %>
+  <main class="mdl-layout__content">
+    <div class="page-content"><center><%= yield %></center></div>
+  </main>
+</div>
 
 
 
