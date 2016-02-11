@@ -42,7 +42,7 @@ class HomeController < ApplicationController
 
   private
     def set_home
-			if PassCode.where(id: PassCode.find_by_passcode(params["passcod"]).id).size != 0
+			if PassCode.where(passcode: params["passcod"]).size != 0
 	    	if PassCode.find_by_passcode(params["passcod"])
 					@pass_code_id = PassCode.find_by_passcode(params["passcod"]).id
 					@pass_code = PassCode.find(@pass_code_id)
