@@ -34,7 +34,7 @@ pollModule.factory('$localstorage', ['$window', function($window) {
   }
 }]);
 
-pollModule.controller('pollCtrl', function($scope, $localstorage) {
+pollModule.controller('pollCtrl', ['$scope', '$localstorage', function($scope, $localstorage) {
 
     $scope.girisKodMiktar = 0;
     $scope.idlerSenkron = function() {
@@ -71,15 +71,15 @@ pollModule.controller('pollCtrl', function($scope, $localstorage) {
         return ""
       }
     }
-});
+}]);
 
-pollModule.controller('indexCtrl', function($scope, $localstorage) {
+pollModule.controller('indexCtrl', ['$scope', '$localstorage', function($scope, $localstorage) {
 
   $scope.idlerReset = function(){
     $localstorage.setObject("idler", {});
   }
 
-});
+}]);
 
 function maxLengthCheck(object)
   {
