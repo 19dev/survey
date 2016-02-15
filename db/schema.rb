@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20160125074547) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "answer_description", limit: 65535
+    t.boolean  "answer_is_true"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.integer  "question_id",        limit: 4
@@ -59,15 +60,17 @@ ActiveRecord::Schema.define(version: 20160125074547) do
     t.text     "poll_description", limit: 65535
     t.datetime "poll_start_date"
     t.datetime "poll_finish_date"
+    t.text     "poll_feedback",    limit: 65535
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
 
   create_table "questions", force: :cascade do |t|
-    t.text     "question_header", limit: 65535
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.integer  "poll_id",         limit: 4
+    t.string   "question_header",      limit: 255
+    t.text     "question_description", limit: 65535
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.integer  "poll_id",              limit: 4
   end
 
   add_index "questions", ["poll_id"], name: "index_questions_on_poll_id", using: :btree
