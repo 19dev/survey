@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160125074547) do
+ActiveRecord::Schema.define(version: 20160215120847) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20160125074547) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "answer_description", limit: 65535
-    t.boolean  "answer_is_true"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.integer  "question_id",        limit: 4
@@ -51,26 +50,44 @@ ActiveRecord::Schema.define(version: 20160125074547) do
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.integer  "poll_id",               limit: 4
+    t.integer  "person_id",             limit: 4
   end
 
+  add_index "pass_codes", ["person_id"], name: "index_pass_codes_on_person_id", using: :btree
   add_index "pass_codes", ["poll_id"], name: "index_pass_codes_on_poll_id", using: :btree
+
+  create_table "people", force: :cascade do |t|
+    t.string   "person_first_name", limit: 255
+    t.string   "person_last_name",  limit: 255
+    t.date     "person_birthday"
+    t.integer  "person_tc",         limit: 8
+    t.string   "person_tel_no",     limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  create_table "poll_images", force: :cascade do |t|
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "poll_id",    limit: 4
+  end
+
+  add_index "poll_images", ["poll_id"], name: "index_poll_images_on_poll_id", using: :btree
 
   create_table "polls", force: :cascade do |t|
     t.string   "poll_name",        limit: 255
     t.text     "poll_description", limit: 65535
     t.datetime "poll_start_date"
     t.datetime "poll_finish_date"
-    t.text     "poll_feedback",    limit: 65535
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string   "question_header",      limit: 255
-    t.text     "question_description", limit: 65535
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-    t.integer  "poll_id",              limit: 4
+    t.text     "question_header", limit: 65535
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "poll_id",         limit: 4
   end
 
   add_index "questions", ["poll_id"], name: "index_questions_on_poll_id", using: :btree
@@ -86,7 +103,9 @@ ActiveRecord::Schema.define(version: 20160125074547) do
   add_index "records", ["pass_code_id"], name: "index_records_on_pass_code_id", using: :btree
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "pass_codes", "people"
   add_foreign_key "pass_codes", "polls"
+  add_foreign_key "poll_images", "polls"
   add_foreign_key "questions", "polls"
   add_foreign_key "records", "answers"
   add_foreign_key "records", "pass_codes"
