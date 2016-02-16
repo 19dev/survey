@@ -9,7 +9,7 @@
  	<%= f.input :image, as: :image_preview, input_html: {preview_version: :thumb,:use_default_url => true},label: false%>
     <%= f.input :image_cache , as: :hidden %>
   </div>
-
+	<%=f.input :answer_is_true ,label: "Doğru Cevap"%>
   </br>
  	<%= link_to_remove_association "- Bu seçeneği sil", f %>
 </div>

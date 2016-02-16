@@ -58,6 +58,6 @@ class AnswersController < ApplicationController
     end
 
     def answer_params
-      params.require(:answer).permit(:question_id, :answer_description,:image,:image_cache)
+      params.require(:answer).permit(:question_id, :answer_description,:image,:answer_is_true)
     end
 end
