@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160215120847) do
+ActiveRecord::Schema.define(version: 20160216090137) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -37,10 +37,7 @@ ActiveRecord::Schema.define(version: 20160215120847) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.integer  "question_id",        limit: 4
-    t.string   "img_file_name",      limit: 255
-    t.string   "img_content_type",   limit: 255
-    t.integer  "img_file_size",      limit: 4
-    t.datetime "img_updated_at"
+    t.string   "image",              limit: 255
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree

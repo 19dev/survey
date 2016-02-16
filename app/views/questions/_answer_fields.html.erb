@@ -5,8 +5,10 @@
 	 	 label_html: {class: "mdl-textfield__label"}, label: "Seçenek Açıklaması" %>
   </div>
 
-  <div class="mdl-cell mdl-cell--12-col">
-    <%= f.file_field :img, class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect' %>
+  <div class="mdl-cell mdl-cell--12-col">	
+ 	<%= image_tag(@question.answers.first.image_url) if @question.answers.first.image? %>
+    <%= f.input :image,as: :file, label: false %>
+    <%= f.input :image_cache , as: :hidden %>
   </div>
 
   </br>

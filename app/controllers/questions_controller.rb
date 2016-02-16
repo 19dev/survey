@@ -57,6 +57,6 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:question_header, :question_description, :poll_id, answers_attributes: [:id, :answer_description, :img, :_destroy])
+      params.require(:question).permit(:question_header, :question_description, :poll_id, answers_attributes: [:id, :answer_description, :image, :_destroy])
     end
 end
