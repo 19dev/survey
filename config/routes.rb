@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :reports
   get 'about', to: "home#about"
   get 'survey', to: "home#survey"
+  post 'survey_entrance', to: "home#survey_entrance"
+   get 'survey_entrance', to: "home#survey_entrance"
   post 'survey', to: "home#survey"
   post 'record', to: "home#record"
   get 'record', to: "home#record"

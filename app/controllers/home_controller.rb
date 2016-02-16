@@ -27,6 +27,9 @@ class HomeController < ApplicationController
 
 	end
 
+	def survey_entrance
+	end
+	
 	def record
 		@idler = params[:idler][1..-2]
 		@idler = @idler.split(",").map(&:to_i)
