@@ -1,4 +1,7 @@
+.answer_image {
+  height: 70% !important;
 
+}
 #view-source {
 	position: fixed;
 	display: block;

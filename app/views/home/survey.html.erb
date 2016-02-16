@@ -17,7 +17,7 @@
         <div class="mdl-cell mdl-cell--6-col">
 
           <button class="surveyanswerbutton" ng-click="id_ekle_cikar(<%= answer.id %>)" ng-class="surveyButtonClass(<%= answer.id %>)">
-            buraya resim eklencek
+            <%= image_tag(answer.image.thumbnail.url, :class => "thumbnail inline") %>
             <p style="border-top: 3px solid #E91E63">
               <%= answer.answer_description %>
             </p>

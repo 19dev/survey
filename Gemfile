@@ -25,7 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'simple_form'
 gem 'will_paginate', '~> 3.0.6'
 gem 'carrierwave'
-gem "mini_magick"
+gem 'mini_magick'
+gem 'cloudinary'
 gem 'simple_form_fancy_uploads'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

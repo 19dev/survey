@@ -1,4 +1,4 @@
-<%= form_for @answer ,html: { multipart: true } do |f| %>
+<%= simple_form_for @answer ,html: { multipart: true } do |f| %>
   <% if @answer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
@@ -12,12 +12,16 @@
   <% end %>
 
 <div class="mdl-grid" style="width: 40%">
-  <div class="field mdl-cell mdl-cell--12-col">
-    buraya image koyulcak
-  </div>
   <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
     <%= f.label :answer_description, class: "mdl-textfield__label"  %><br>
     <%= f.text_area :answer_description , class: "mdl-textfield__input" %>
+  </div>
+  <div class="mdl-cell mdl-cell--12-col"> 
+  <%= f.input :image, as: :image_preview, input_html: {preview_version: :thumbnail,:use_default_url => true},label: false%>
+    <%= f.input :image_cache , as: :hidden %>
+  </div>
+  <div class="mdl-cell mdl-cell--12-col"> 
+    <%=f.input :answer_is_true ,label: "Doğru Cevap"%>
   </div>
   <div class="actions mdl-cell mdl-cell--12-col">
     <%= f.submit "Kaydet", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
