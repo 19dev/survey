@@ -6,8 +6,7 @@
   </div>
 
   <div class="mdl-cell mdl-cell--12-col">	
- 	<%= image_tag(@question.answers.first.image_url) if @question.answers.first.image? %>
-    <%= f.input :image,as: :file, label: false %>
+ 	<%= f.input :image, as: :image_preview, input_html: {preview_version: :thumb,:use_default_url => true},label: false%>
     <%= f.input :image_cache , as: :hidden %>
   </div>
 
