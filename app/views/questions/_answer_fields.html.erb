@@ -9,8 +9,10 @@
  	<%= f.input :image, as: :image_preview, input_html: {preview_version: :thumbnail,:use_default_url => true},label: false%>
     <%= f.input :image_cache , as: :hidden %>
   </div>
+
   <div class="mdl-cell mdl-cell--12-col"> 
     <%=f.input :answer_is_true ,label: "Doğru Cevap"%>
   </div>
  	<%= link_to_remove_association "- Bu seçeneği sil", f %>
+  
 </div>

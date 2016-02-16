@@ -9,19 +9,26 @@
 
       <div class="mdl-cell mdl-cell--12-col">
         <p>
-          <b>Soru:</b> <%= poll_question.question_header %>
+          <b><%= poll_question.question_header %></b>
+        </p>
+      </div>
+      <div class="mdl-cell mdl-cell--12-col">
+        <p>
+          <%= poll_question.question_description %>
         </p>
       </div>
       <div class="mdl-grid">
         <% poll_question.answers.each do |answer| %>
-        <div class="mdl-cell mdl-cell--6-col">
+          <div class="mdl-cell mdl-cell--4-col">
+          <div class="demo-card-square mdl-card mdl-shadow--2dp unselectable" ng-click="id_ekle_cikar(<%= answer.id %>)" ng-class="surveyButtonClass(<%= answer.id %>)">
+            <%= image_tag answer.image_url, class: "survey_answer_image" %>
+              
+          <div class="mdl-card__title mdl-card--expand"></div>
+          <div class="mdl-card__actions mdl-card--border">
+          <%= answer.answer_description %>
+          </div>
+      </div>
 
-          <button class="surveyanswerbutton" ng-click="id_ekle_cikar(<%= answer.id %>)" ng-class="surveyButtonClass(<%= answer.id %>)">
-            <%= image_tag(answer.image.thumbnail.url, :class => "thumbnail inline") %>
-            <p style="border-top: 3px solid #E91E63">
-              <%= answer.answer_description %>
-            </p>
-          </button>
         </div>
         <%end%>
       </div>
