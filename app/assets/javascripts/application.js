@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require cocoon
+//= require ckeditor/init
 //= require_tree .
 
 var pollModule = angular.module('pollModule', []);

@@ -1,30 +1,36 @@
 <%= simple_form_for @poll do |f| %>
-<div class="mdl-grid" style="width: 40%">
+<div class="mdl-grid" style="width: 50%">
+  <h3>Anket Adı:</h3>
   <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col ">
-    <%= f.input :poll_name, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: "Anket Adı" %>
+    <%= f.input :poll_name, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"} %>
   </div>
+
+
+    <h3>Açıklama:</h3>
+
   <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-    <%= f.input :poll_description, input_html: { class: "mdl-textfield__input"},label_html:{class: "mdl-textfield__label"}, label: "Açıklaması" %>
+    <%= f.cktext_area :poll_description, input_html: { class: "mdl-textfield__input"},label_html:{class: "mdl-textfield__label"}, :ckeditor=> {:language => 'tr'} %>
   </div>
+
   <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
     <%= f.input :poll_start_date, label: "Başlangıç Zamanı : " %>
   </div>
   <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
     <%= f.input :poll_finish_date, label: "Bitiş Zamanı : " %>
   </div>
-  <h3>Anket Karşılama Sayfasındaki Resimler</h3>
-  <div class="">
+  <h3>Anket Karşılama Sayfasındaki Resimler:</h3>
+  <div>
     <div id='poll_images' class="">
       <%= f.simple_fields_for :poll_images do |pi| %>
         <%= render 'poll_image_fields', :f => pi %>
       <%end%>
   <div class='links'>
-    <%= link_to_add_association '+ Yeni Seçenek Ekle', f, :poll_images %>
+    <%= link_to_add_association '+ Yeni Resim Ekle', f, :poll_images %>
   </div>
 </div>
-    <h3>Sorular</h3>
 
   </div>
+  <h3>Sorular:</h3>
   <div id='questions' class=" mdl-cell--12-col">
     <%= f.simple_fields_for :questions do |question| %>
   <%= render 'question_fields', :f => question %>
@@ -33,7 +39,7 @@
     <%= link_to_add_association '+ Soru ekle', f, :questions %>
   </div>
 </div>
-<h3>Geri Bildirim</h3>
+<h3>Geri Bildirim:</h3>
 <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
   <%= f.input :poll_feedback ,input_html: { class: "mdl-textfield__input"},label_html:{class: "mdl-textfield__label"}, label: "Açıklaması"%>
 

@@ -7,7 +7,6 @@
   <thead>
     <tr>
       <th class="mdl-data-table__cell--non-numeric">AD</th>
-      <th class="mdl-data-table__cell--non-numeric">AÇIKLAMA</th>
       <th class="mdl-data-table__cell--non-numeric">BAŞLAMA TARİHİ</th>
       <th class="mdl-data-table__cell--non-numeric">BİTİŞ TARİHİ</th>
       <th class="mdl-data-table__cell--non-numeric" colspan="3"></th>
@@ -18,7 +17,6 @@
     <% @polls.each do |poll| %>
       <tr>
         <td class="mdl-data-table__cell--non-numeric"><%= link_to poll.poll_name, poll %></td>
-        <td class="mdl-data-table__cell--non-numeric"><%= poll.poll_description %></td>
         <td><%= poll.poll_start_date %></td>
         <td><%= poll.poll_finish_date %></td>
         <td class="mdl-data-table__cell--non-numeric"><%= link_to 'DÜZENLE', edit_poll_path(poll), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>

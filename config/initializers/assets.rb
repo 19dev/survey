@@ -5,6 +5,7 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( material.min.css )
 Rails.application.config.assets.precompile += %w( material.min.js )
 Rails.application.config.assets.precompile += %w( angular.min.js )
+Rails.application.config.assets.precompile += %w( ckeditor/* )
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
