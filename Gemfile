@@ -28,6 +28,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'cloudinary'
 gem 'simple_form_fancy_uploads'
+gem 'nokogiri'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

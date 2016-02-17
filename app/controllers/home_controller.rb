@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
-	  before_action :set_home, only: [:survey, :survey_entrance, :record]
+	before_action :set_home, only: [:survey, :survey_entrance, :record]
+	require 'nokogiri'
+	require 'open-uri'
+
 	def survey
 
 			if @pass_code.blank?
@@ -21,6 +24,8 @@ class HomeController < ApplicationController
 				end
 				@poll = Poll.find(@pid)
 				@poll_questions = @poll.questions.all.paginate(page: params[:page], per_page: 1)
+				@asd = Nokogiri::HTML("<h1>Mr. Belvedere Fan Club</h1>")
+
 
 			end
 

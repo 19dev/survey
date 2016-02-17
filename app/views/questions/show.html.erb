@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Soru :</strong>
-  <%= @question.question_header %>
-</p>
-
+<div ng-app="pollModule" ng-controller="pollCtrl">
+  <p>
+    <b>Soru :</b>
+    <%= @question.question_header %>
+  </p>
+  <p ng-bind-html = "renderHtml('<%= @question.question_description %>')"></p>
+</div>
 <h2>SEÇENEKLER</h2>
 <% if @question_answers.length != 0 %>
 

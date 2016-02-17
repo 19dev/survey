@@ -1,4 +1,5 @@
 
+
 <p id="notice"><%= notice %></p>
 
 
@@ -13,8 +14,10 @@
         </p>
       </div>
       <div class="mdl-cell mdl-cell--12-col">
-        <p>
-          <%= poll_question.question_description %>
+      
+        <p ng-bind-html = "renderHtml('<%= poll_question.question_description %>')">
+        
+
         </p>
       </div>
 
@@ -60,6 +63,6 @@
     <%= link_to 'KAYDET VE BİTİR', URI::unescape(record_path(:idler => ('{{idler_array}}'), :passcod => params[:passcod] )), method: :post,
     class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--2-col", data: { confirm: 'Kayıtlarınız sisteme kaydedilecek ve ankete tekrar katılamayacaksınız ! Bitirmek istediğinize emin misiniz ?' } %>
 
-
+    
 </div>
 </div>

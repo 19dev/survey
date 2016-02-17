@@ -34,7 +34,7 @@ pollModule.factory('$localstorage', ['$window', function($window) {
   }
 }]);
 
-pollModule.controller('pollCtrl', ['$scope', '$localstorage', function($scope, $localstorage) {
+pollModule.controller('pollCtrl', ['$scope', '$localstorage', '$sce', function($scope, $localstorage, $sce) {
 
     $scope.girisKodMiktar = 0;
     $scope.idlerSenkron = function() {
@@ -62,6 +62,12 @@ pollModule.controller('pollCtrl', ['$scope', '$localstorage', function($scope, $
         this.push(parseInt(key));
       }, $scope.idler_array);
     }
+
+    //Html parse etmek için
+    $scope.renderHtml = function(html_code)
+    {
+      return $sce.trustAsHtml(html_code);
+    };
 
     $scope.surveyCardClass = function(id){
       if ($scope.idler[id] === true) {
