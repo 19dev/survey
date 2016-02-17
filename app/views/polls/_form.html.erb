@@ -12,11 +12,18 @@
   <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
     <%= f.input :poll_finish_date, label: "Bitiş Zamanı : " %>
   </div>
-  <div class="mdl-cell mdl-cell--12-col" style="tex-align:center">
+  <div class="">
+    <div id='poll_images' class="">
+      <%= f.simple_fields_for :poll_images do |pi| %>
+        <%= render 'poll_image_fields', :f => pi %>
+      <%end%>
+  <div class='links'>
+    <%= link_to_add_association '+ Yeni Seçenek Ekle', f, :poll_images %>
+  </div>
+</div>
     <h3>Sorular</h3>
 
   </div>
-
   <div id='questions' class=" mdl-cell--12-col">
     <%= f.simple_fields_for :questions do |question| %>
   <%= render 'question_fields', :f => question %>
