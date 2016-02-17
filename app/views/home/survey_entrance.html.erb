@@ -1,2 +1,20 @@
-Anket giriş sayfası
-<%=link_to "GİRİŞ", URI::unescape(survey_path(:passcod => (params[:passcod]))), method: :post,class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"%>
+
+<div class="mdl-grid" ng-app="pollModule" ng-controller="pollCtrl">
+	<div class="mdl-cell mdl-cell--12-col">
+		<h1 >Anket giriş sayfası</h1>
+		<%= @poll.poll_name %>
+		<p ng-bind-html="renderHtml('<%= @poll.poll_description %>')">
+		</p>
+	</div>
+	<div class="mdl-cell mdl-cell--12-col">
+		<% @poll.poll_images.each do |pi| %>
+				<%= image_tag pi.image_url, style: "width:150px;height:200px;" %>
+				
+		<%end%>
+		<br>
+		<%=link_to "GİRİŞ", URI::unescape(survey_path(:passcod => (params[:passcod]))), method: :post,class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"%>
+	</div>
+
+
+
+</div>
