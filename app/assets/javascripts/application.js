@@ -63,7 +63,7 @@ pollModule.controller('pollCtrl', ['$scope', '$localstorage', function($scope, $
       }, $scope.idler_array);
     }
 
-    $scope.surveyButtonClass = function(id){
+    $scope.surveyCardClass = function(id){
       if ($scope.idler[id] === true) {
         return "clickedAnswer"
       }

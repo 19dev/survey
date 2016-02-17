@@ -17,21 +17,40 @@
           <%= poll_question.question_description %>
         </p>
       </div>
+
       <div class="mdl-cell mdl-cell--1-col">
       </div>
       <div class="mdl-grid mdl-cell mdl-cell--10-col">
         <% poll_question.answers.each do |answer| %>
-          <div class="mdl-cell mdl-cell--4-col">
-          <div class="demo-card-square mdl-card mdl-shadow--2dp unselectable" ng-click="id_ekle_cikar(<%= answer.id %>)" ng-class="surveyButtonClass(<%= answer.id %>)">
-            <%= image_tag answer.image_url, class: "survey_answer_image" %>
-              
-          <div class="mdl-card__title mdl-card--expand"></div>
-          <div class="mdl-card__actions mdl-card--border">
-          <%= answer.answer_description %>
-          </div>
-      </div>
+          
+          <% if answer.image.filename != nil && answer.answer_description.size != 0 %>
+            <div class="mdl-cell mdl-cell--4-col">
+              <div class="demo-card-square mdl-card mdl-shadow--2dp unselectable" ng-click="id_ekle_cikar(<%= answer.id %>)" ng-class="surveyCardClass(<%= answer.id %>)">
+                <%= image_tag answer.image_url, class: "survey_answer_image" %>
+                  
+                <div class="mdl-card__title mdl-card--expand"></div>
+                <div class="mdl-card__actions mdl-card--border">
+                <%= answer.answer_description %>
+                </div>
+              </div>
+            </div>
 
-        </div>
+          <% elsif answer.image.filename == nil && answer.answer_description.size != 0 %>
+            <div class="mdl-cell mdl-cell--4-col">
+              <div class="demo-card-square mdl-card mdl-shadow--2dp unselectable" ng-click="id_ekle_cikar(<%= answer.id %>)" ng-class="surveyCardClass(<%= answer.id %>)">
+                <%= answer.answer_description %>
+              </div>
+            </div>
+
+          <% elsif answer.image.filename != nil && answer.answer_description.size == 0 %>
+            <div class="mdl-cell mdl-cell--4-col">
+              <div class="demo-card-square mdl-card mdl-shadow--2dp unselectable" ng-click="id_ekle_cikar(<%= answer.id %>)" ng-class="surveyCardClass(<%= answer.id %>)">
+                  <%= image_tag answer.image_url, class: "survey_answer_image" %>
+              </div>
+            </div>
+
+          <%end%>
+
         <%end%>
       </div>
       <% end %>
