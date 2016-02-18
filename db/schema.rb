@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217144826) do
+ActiveRecord::Schema.define(version: 20160218080630) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -37,10 +37,6 @@ ActiveRecord::Schema.define(version: 20160217144826) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.integer  "question_id",        limit: 4
-    t.string   "img_file_name",      limit: 255
-    t.string   "img_content_type",   limit: 255
-    t.integer  "img_file_size",      limit: 4
-    t.datetime "img_updated_at"
     t.string   "image",              limit: 255
   end
 
@@ -103,6 +99,15 @@ ActiveRecord::Schema.define(version: 20160217144826) do
     t.datetime "updated_at",                     null: false
   end
 
+  create_table "question_images", force: :cascade do |t|
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "image",       limit: 255
+    t.integer  "question_id", limit: 4
+  end
+
+  add_index "question_images", ["question_id"], name: "index_question_images_on_question_id", using: :btree
+
   create_table "questions", force: :cascade do |t|
     t.string   "question_header",      limit: 255
     t.text     "question_description", limit: 65535
@@ -127,6 +132,7 @@ ActiveRecord::Schema.define(version: 20160217144826) do
   add_foreign_key "pass_codes", "people"
   add_foreign_key "pass_codes", "polls"
   add_foreign_key "poll_images", "polls"
+  add_foreign_key "question_images", "questions"
   add_foreign_key "questions", "polls"
   add_foreign_key "records", "answers"
   add_foreign_key "records", "pass_codes"
