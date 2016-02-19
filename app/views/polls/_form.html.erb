@@ -1,4 +1,14 @@
 <%= simple_form_for @poll do |f| %>
+
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+        <div class="mdl-tabs__tab-bar">
+          <a href="#lannister-panel" class="mdl-tabs__tab is-active">GENEL BİLGİLER</a>
+          <a href="#starks-panel" class="mdl-tabs__tab">SORULAR</a>
+        </div>
+          </br>
+                  <div class="mdl-tabs__panel is-active" id="lannister-panel">
+
+
 <div class="mdl-grid" style="width: 50%">
   <h3>Anket Adı:</h3>
   <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col ">
@@ -30,7 +40,21 @@
 </div>
 
   </div>
-  <h3>Sorular:</h3>
+
+<h3>Geri Bildirim:</h3>
+<div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+  <%= f.input :poll_feedback ,input_html: { class: "mdl-textfield__input"},label_html:{class: "mdl-textfield__label"}, label: "Açıklaması"%>
+
+  
+</div>
+
+</div>
+</div>
+
+    <div class="mdl-tabs__panel  mdl-grid" id="starks-panel">
+
+<div class="mdl-grid" style="width: 50%">
+
   <div id='questions' class=" mdl-cell--12-col">
     <%= f.simple_fields_for :questions do |question| %>
   <%= render 'question_fields', :f => question %>
@@ -39,14 +63,11 @@
     <%= link_to_add_association '+ Soru ekle', f, :questions %>
   </div>
 </div>
-<h3>Geri Bildirim:</h3>
-<div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-  <%= f.input :poll_feedback ,input_html: { class: "mdl-textfield__input"},label_html:{class: "mdl-textfield__label"}, label: "Açıklaması"%>
+</div>
 
-  
 </div>
 <div class="actions mdl-cell mdl-cell--12-col">
   <%= f.submit 'Kaydet', class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
 </div>
-</div>
+
 <% end %>

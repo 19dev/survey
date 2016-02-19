@@ -9,12 +9,17 @@
           </br>
         <div class="mdl-tabs__panel is-active" id="lannister-panel">
           <div class="mdl-grid" style="width: 40%">
+              <h4 class="labels" >Soru:</h4>
             <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-              <%= f.input :question_header, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: "Soru" %>
+              <%= f.input :question_header, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: false %>
             </div>
+
+            <h4 class="labels" >Açıklaması:</h4>
             <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-              <%= f.input :question_description, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: "Açıklama" %>
+              <%= f.input :question_description, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: false %>
           </div>
+            <h4 class="labels" >Resimleri:</h4>
+
             <div id='question_images' class=" mdl-cell--12-col">
               <%= f.simple_fields_for :question_images do |question_image| %>
                 <%= render 'question_image_fields', :f => question_image %>

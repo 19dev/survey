@@ -37,7 +37,7 @@ pollModule.factory('$localstorage', ['$window', function($window) {
 
 pollModule.controller('pollCtrl', ['$scope', '$localstorage', '$sce', function($scope, $localstorage, $sce) {
 
-    $scope.girisKodMiktar = 0;
+    $scope.girisKodMiktar;
     $scope.idlerSenkron = function() {
       $scope.idler = $localstorage.getObject('idler') || {};
       $scope.idler_array = [];

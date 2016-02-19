@@ -1,10 +1,10 @@
  <div class="nested-fields">
-
+ <h4 class="labels" >Seçenek Açıklaması:</h4>
   <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
      <%= f.input :answer_description, input_html: { class: "mdl-textfield__input"},
-	 	 label_html: {class: "mdl-textfield__label"}, label: "Seçenek Açıklaması" %>
+	 	 label_html: {class: "mdl-textfield__label"}, label: false %>
   </div>
-
+  <h4 class="labels" >Seçenek Resmi:</h4>
   <div class="mdl-cell mdl-cell--12-col">	
  	<%= f.input :image, as: :image_preview, input_html: {preview_version: :thumbnail,:use_default_url => true},label: false%>
   </div>

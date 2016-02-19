@@ -1,10 +1,13 @@
 
  <div class="nested-fields">
+ 	<h4 class="labels" >Soru:</h4>
 	 <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-    <%= f.input :question_header, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: "Soru" %>
+    <%= f.input :question_header, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: false %>
   	</div>
+  	 <h4 class="labels" >Soru Açıklaması:</h4>
+
 	 <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-    <%= f.input :question_description, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: "Açıklama" %>
+    <%= f.input :question_description, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: false %>
     </div>
  	</br>
  	<%= link_to_remove_association "- Bu soruyu sil", f %>

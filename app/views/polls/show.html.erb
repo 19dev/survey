@@ -1,111 +1,113 @@
 <p id="notice"><%= notice %></p>
- <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-      <div class="mdl-tabs__tab-bar">
-      <a href="#lannister-panel" class="mdl-tabs__tab">ANKET BİLGİLERİ</a>
-          <a href="#starks-panel" class="mdl-tabs__tab">SORULAR</a>
-          <a href="#targaryens-panel" class="mdl-tabs__tab is-active">GİRİŞ KODLARI</a>
-      </div>
-        </br>
-      <div class="mdl-tabs__panel" id="lannister-panel">
-         <p>
-          <strong>Anket Adı:</strong>
-          <%= @poll.poll_name %>
-        </p>
-          <p>
-          <strong>Açıklaması:</strong>
-          <%= @poll.poll_description %>
+<div ng-app="pollModule" ng-controller="pollCtrl">
 
-          </p>
-          <p>
-            <strong>Başlama Tarihi:</strong>
-            <%= @poll.poll_start_date %>
-          </p>
-          <p>
-            <strong>Bitiş Tarihi:</strong>
-            <%= @poll.poll_finish_date %>
-          </p>
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect" >
+  <div class="mdl-tabs__tab-bar">
+    <a href="#targaryens-panel" class="mdl-tabs__tab is-active">GİRİŞ KODLARI</a>
+    <a href="#starks-panel" class="mdl-tabs__tab">SORULAR</a>
 
-      </div>
+    <a href="#lannister-panel" class="mdl-tabs__tab">HAKKINDA</a>
+  </div>
+</br>
+<div class="mdl-tabs__panel" id="lannister-panel">
+ <p>
+  <strong>Anket Adı:</strong>
+  <%= @poll.poll_name %>
+</p>
+<p>
+  <strong>Açıklaması:</strong>
+  <p ng-bind-html = "renderHtml('<%= @poll.poll_description %>')"></p>
 
-      <div class="mdl-tabs__panel" id="starks-panel">
-        <% if @poll_questions.length != 0 %>
-        <table class="mdl-data-table mdl-js-data-table">
-          <thead>
-            <tr>
-              <th class="mdl-data-table__cell--non-numeric">Soru</th>
-              <th class="mdl-data-table__cell--non-numeric" colspan="3"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @poll_questions.each do |poll_question| %>
-              <tr>
-                <td class="mdl-data-table__cell--non-numeric"><%= link_to poll_question.question_header, poll_question  %></td>
-                <td class="mdl-data-table__cell--non-numeric"><%= link_to 'DÜZENLE', edit_question_path(poll_question), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
-                <td class="mdl-data-table__cell--non-numeric"><%= link_to 'SİL', poll_question, method: :delete, data: { confirm: 'Soru silinecek! Emin misiniz ?' }, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <% else %>
-          <p>
-            Bu ankette hiç bir soru bulunmuyor !
-          </p>
-        <% end %>
-      </div>
-      <div class="mdl-tabs__panel is-active" id="targaryens-panel">
-        <% if @poll_passcodes.length != 0 %>
-        <table class="mdl-data-table mdl-js-data-table">
-          <thead>
-            <tr>
-              <th class="mdl-data-table__cell--non-numeric">Giriş Kodları</th>
-              <th class="mdl-data-table__cell--non-numeric">Bitirdi</th>
-            </tr>
-          </thead>
-          <tbody>
-          <div class="digg_pagination">
-            <%= will_paginate @poll_passcodes %>
-              </br>
-            <% @poll_passcodes.each do |pc| %>
-              <tr>
-              <td class="mdl-data-table__cell--non-numeric"><%=pc.passcode %></td>
-              <td class="mdl-data-table__cell--non-numeric">
-                <%if pc.pass_code_is_finished%>
-                <i class="material-icons">done</i>
-                <%else%>
-                <i class="material-icons">highlight_off</i>
-                <%end%>
-              </td>
-            </tr>
-            <% end %>
-          </div>
+</p>
+<p>
+  <strong>Başlama Tarihi:</strong>
+  <%= @poll.poll_start_date %>
+</p>
+<p>
+  <strong>Bitiş Tarihi:</strong>
+  <%= @poll.poll_finish_date %>
+</p>
 
-          </tbody>
-        </table>
-        <% else %>
-          <p>
-            Bu ankette hiç giriş kodu bulunmuyor !
-          </p>
-        <% end %>
+</div>
 
-      </div>
-    </div>
+<div class="mdl-tabs__panel" id="starks-panel">
+<% if @poll_questions.length != 0 %>
+<table class="mdl-data-table mdl-js-data-table">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Soru</th>
+      <th class="mdl-data-table__cell--non-numeric" colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @poll_questions.each do |poll_question| %>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric"><%= link_to poll_question.question_header, poll_question  %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= link_to 'DÜZENLE', edit_question_path(poll_question), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%= link_to 'SİL', poll_question, method: :delete, data: { confirm: 'Soru silinecek! Emin misiniz ?' }, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+<p>
+  Bu ankette hiç bir soru bulunmuyor !
+</p>
+<% end %>
+</div>
 
-
-<div  ng-app="pollModule">
-  <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--1-col">
-    <input type="number" class="mdl-textfield__input" name="name" placeholder="Miktar" ng-model="girisKodMiktar" oninput="maxLengthCheck(this)" maxlength = "2">
-
+<div class="mdl-tabs__panel is-active" id="targaryens-panel">
+<% if @poll_passcodes.length != 0 %>
+<table class="mdl-data-table mdl-js-data-table">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Giriş Kodları</th>
+      <th class="mdl-data-table__cell--non-numeric">Bitirdi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <div class="digg_pagination">
+      <%= will_paginate @poll_passcodes %>
+    </br>
+    <% @poll_passcodes.each do |pc| %>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric"><%=pc.passcode %></td>
+      <td class="mdl-data-table__cell--non-numeric">
+        <%if pc.pass_code_is_finished%>
+        <i class="material-icons">done</i>
+        <%else%>
+        <i class="material-icons">highlight_off</i>
+        <%end%>
+      </td>
+    </tr>
+    <% end %>
   </div>
 
-  <%= link_to 'GİRİŞ KODU ÜRET', URI::unescape(passCodeCreator_poll_path(:type => ('{{girisKodMiktar}}'))), method: :post,
-   class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent  mdl-cell mdl-cell--2-col" %>
+</tbody>
+</table>
+<% else %>
+<p>
+Bu ankette hiç giriş kodu bulunmuyor !
+</p>
+<% end %>
 </div>
+</div>
+  
+
+<div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--1-col">
+<input type="number" class="mdl-textfield__input" name="name" placeholder="Miktar" ng-model="girisKodMiktar" oninput="maxLengthCheck(this)" maxlength = "2">
+
+</div>
+
+<%= link_to 'GİRİŞ KODU ÜRET', URI::unescape(passCodeCreator_poll_path(:type => ('{{girisKodMiktar}}'))), method: :post,
+class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent  mdl-cell mdl-cell--2-col" %>
 
 
 
 </br>
 <div>
-  <%= link_to 'ANKETİ DÜZENLE', edit_poll_path(@poll), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
-  <%= link_to 'GERİ', polls_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+<%= link_to 'ANKETİ DÜZENLE', edit_poll_path(@poll), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+<%= link_to 'GERİ', polls_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
 
+</div>
 </div>
