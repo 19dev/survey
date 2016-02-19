@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :answers
   resources :home
   resources :reports
+  resources :people
   get 'about', to: "home#about"
   get 'survey', to: "home#survey"
   post 'survey_entrance', to: "home#survey_entrance"
