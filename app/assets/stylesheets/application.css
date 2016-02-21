@@ -126,6 +126,11 @@
   padding-bottom:5px;
 }
 
+.reports_answer_image{
+  height: 70% !important;
+  margin: 0 !important;
+}
+
 .navigationLink {
 	color: white !important;
 }
