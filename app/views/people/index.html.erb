@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing People</h1>
+<h2>Kişiler</h2>
 
 <table>
   <thead>
@@ -12,9 +12,9 @@
   <tbody>
     <% @people.each do |person| %>
       <tr>
-        <td><%= link_to 'Show', person %></td>
-        <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Göster', person %></td>
+        <td><%= link_to 'Düzenle', edit_person_path(person), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" %></td>
+        <td><%= link_to 'Sil', person, method: :delete, data: { confirm: 'Are you sure?' }, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Person', new_person_path %>
+<%= link_to 'KİŞİ EKLE', new_person_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
