@@ -3,55 +3,41 @@
 <div ng-app="pollModule" ng-controller="pollCtrl">
   <div class="digg_pagination" data-ng-init="idlerSenkron()">
     <div class="mdl-grid">
-    <% @poll_questions.each do |poll_question| %>
+      <% @poll_questions.each do |poll_question| %>
 
       <div class="mdl-cell mdl-cell--12-col">
-        <p>
-          <b><%= poll_question.question_header %></b>
-        </p>
+        <p><b><%= poll_question.question_header %></b></p>
       </div>
-      <div class="mdl-cell mdl-cell--12-col">
       
-        <p ng-bind-html = "renderHtml('<%= poll_question.question_description %>')">
-        
-
-        </p>
-      </div>
-
-      <div class="mdl-cell mdl-cell--1-col"></div>
-      <div class="mdl-grid mdl-cell mdl-cell--10-col">
+      <p ng-bind-html = "renderHtml('<%= poll_question.question_description %>')"></p>
+    </div>
+      <div class="mdl-grid" style="align-content: center !important; justify-content: center !important" >
+      
         <% poll_question.answers.each do |answer| %>
-          
-          <% if answer.image.filename != nil && answer.answer_description.size != 0 %>
-            <div class="mdl-cell mdl-cell--4-col">
-              <div class="demo-card-square mdl-card mdl-shadow--2dp unselectable" ng-click="id_ekle_cikar(<%= answer.id %>)" ng-class="surveyCardClass(<%= answer.id %>)">
-                <%= image_tag answer.image_url, class: "survey_answer_image" %>
-                  
-                <div class="mdl-card__title mdl-card--expand"></div>
-                <div class="mdl-card__actions mdl-card--border">
-                <%= answer.answer_description %>
-                </div>
-              </div>
-            </div>
-
-          <% elsif answer.image.filename == nil && answer.answer_description.size != 0 %>
-            <div class="mdl-cell mdl-cell--4-col">
-              <div class="demo-card-square mdl-card mdl-shadow--2dp unselectable" ng-click="id_ekle_cikar(<%= answer.id %>)" ng-class="surveyCardClass(<%= answer.id %>)">
-                <%= answer.answer_description %>
-              </div>
-            </div>
-
-          <% elsif answer.image.filename != nil && answer.answer_description.size == 0 %>
-            <div class="mdl-cell mdl-cell--4-col">
-              <div class="demo-card-square mdl-card mdl-shadow--2dp unselectable" ng-click="id_ekle_cikar(<%= answer.id %>)" ng-class="surveyCardClass(<%= answer.id %>)">
+          <div class="mdl-cell mdl-cell--4-col" >
+            <% if answer.image.filename != nil && answer.answer_description.size != 0 %>
+                <div class="demo-card-square mdl-card mdl-shadow--2dp unselectable" ng-click="id_ekle_cikar(<%= answer.id %>)" ng-class="surveyCardClass(<%= answer.id %>)">
                   <%= image_tag answer.image_url, class: "survey_answer_image" %>
-              </div>
-            </div>
+                    
+                  <div class="mdl-card__title mdl-card--expand"></div>
+                  <div class="mdl-card__actions mdl-card--border">
+                  <%= answer.answer_description %>
+                  </div>
+                </div>
+            
+            <% elsif answer.image.filename == nil && answer.answer_description.size != 0 %>
+                <div class="demo-card-square mdl-card mdl-shadow--2dp unselectable" ng-click="id_ekle_cikar(<%= answer.id %>)" ng-class="surveyCardClass(<%= answer.id %>)">
+                  <%= answer.answer_description %>
+                </div>
 
-          <%end%>
-
+            <% elsif answer.image.filename != nil && answer.answer_description.size == 0 %>
+                <div class="demo-card-square mdl-card mdl-shadow--2dp unselectable" ng-click="id_ekle_cikar(<%= answer.id %>)" ng-class="surveyCardClass(<%= answer.id %>)">
+                    <%= image_tag answer.image_url, class: "survey_answer_image" %>
+                </div>
+            <%end%>
+          </div>
         <%end%>
-      </div>
+      
       <% end %>
     </div>
     <%= will_paginate @poll_questions, :params => { :passcod => params[:passcod] },:page_links => false%>
