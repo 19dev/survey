@@ -1,9 +1,17 @@
-<p id="notice"><%= notice %></p>
-<%= @person.person_first_name %>
-<%= @person.person_last_name %>
-<%= @person.person_birthday %>
-<% @person.pass_codes.each do |pp| %>
-	<%= pp.passcode %>
-<%end%>
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<div ng-app="pollModule" ng-controller="pollCtrl">
+	<p id="notice"><%= notice %></p>
+	<%= @person.person_first_name %>
+	<%= @person.person_last_name %>
+	<%= @person.person_birthday %>
+	<select id="anketler" ng-click="onChangePoll()" >
+		<% Poll.all.each do |pp| %>
+			  <option value="<%= pp.id %>"><%= pp.poll_name %></option>
+		<%end%>
+	</select>
+	{{currentPoll}}
+	<%= simple_form_for Poll.all.first do |f| %>
+		<%= f.collection_select :poll_name, Question.all, :id, :question_header  %>
+	<%end%>
+	<%= link_to 'Edit', edit_person_path(@person) %> |
+	<%= link_to 'Back', people_path %>
+</div>

@@ -36,6 +36,11 @@ pollModule.factory('$localstorage', ['$window', function($window) {
 }]);
 
 pollModule.controller('pollCtrl', ['$scope', '$localstorage', '$sce', function($scope, $localstorage, $sce) {
+        $scope.onChangePoll = function(){
+        var e = document.getElementById("anketler");
+        $scope.currentPoll = e.options[e.selectedIndex].value;
+
+    }
 
     $scope.girisKodMiktar;
     $scope.idlerSenkron = function() {
@@ -78,6 +83,8 @@ pollModule.controller('pollCtrl', ['$scope', '$localstorage', '$sce', function($
         return ""
       }
     }
+
+
 }]);
 
 pollModule.controller('indexCtrl', ['$scope', '$localstorage', function($scope, $localstorage) {
@@ -93,3 +100,4 @@ function maxLengthCheck(object)
     if (object.value.length > object.maxLength)
       object.value = object.value.slice(0, object.maxLength)
   }
+
