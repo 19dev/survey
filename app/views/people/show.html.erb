@@ -1,4 +1,9 @@
 <p id="notice"><%= notice %></p>
-
+<%= @person.person_first_name %>
+<%= @person.person_last_name %>
+<%= @person.person_birthday %>
+<% @person.pass_codes.each do |pp| %>
+	<%= pp.passcode %>
+<%end%>
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>

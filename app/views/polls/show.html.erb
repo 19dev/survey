@@ -36,7 +36,8 @@
   <thead>
     <tr>
       <th class="mdl-data-table__cell--non-numeric">Soru</th>
-      <th class="mdl-data-table__cell--non-numeric" colspan="3"></th>
+      <th class="mdl-data-table__cell--non-numeric" ></th>
+      <th class="mdl-data-table__cell--non-numeric" ></th>
     </tr>
   </thead>
   <tbody>
@@ -71,7 +72,8 @@
     </br>
     <% @poll_passcodes.each do |pc| %>
     <tr>
-      <td class="mdl-data-table__cell--non-numeric"><%=pc.passcode %></td>
+      <td class="mdl-data-table__cell--non-numeric"><%=link_to pc.passcode,passcode_path(:id => pc)%>
+      </td>
       <td class="mdl-data-table__cell--non-numeric">
         <%if pc.pass_code_is_finished%>
         <i class="material-icons">done</i>

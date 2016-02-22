@@ -2,18 +2,24 @@
 
 <h2>Kişiler</h2>
 
-<table>
+<table class="mdl-data-table mdl-js-data-table">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th class="mdl-data-table__cell--non-numeric">AD SOYAD</th>
+      <th class="mdl-data-table__cell--non-numeric">DOĞUM TARİHİ</th>
+      <th class="mdl-data-table__cell--non-numeric" ></th>
+      <th class="mdl-data-table__cell--non-numeric" ></th>
     </tr>
   </thead>
 
   <tbody>
     <% @people.each do |person| %>
       <tr>
-        <td><%= link_to 'Göster', person %></td>
-        <td><%= link_to 'Düzenle', edit_person_path(person), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" %></td>
+        <td class="mdl-data-table__cell--non-numeric">
+        <%= link_to person.person_first_name + " " + person.person_last_name, person %>
+        </td>
+        <td><%= person.person_birthday %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'Düzenle', edit_person_path(person), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" %></td>
         <td><%= link_to 'Sil', person, method: :delete, data: { confirm: 'Are you sure?' }, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" %></td>
       </tr>
     <% end %>
