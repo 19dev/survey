@@ -6,6 +6,12 @@
       <% @poll_questions.each do |poll_question| %>
 
       <div class="mdl-cell mdl-cell--12-col">
+      <% poll_question.question_images.all.each do |question_image| %>
+      <%= image_tag question_image.image_url, style: "width:10%" %>
+      <% end %>
+      </div>
+
+      <div class="mdl-cell mdl-cell--12-col">
         <p><b><%= poll_question.question_header %></b></p>
       </div>
       
