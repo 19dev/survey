@@ -37,11 +37,10 @@ pollModule.factory('$localstorage', ['$window', function($window) {
 
 pollModule.controller('pollCtrl', ['$scope', '$localstorage', '$sce', function($scope, $localstorage, $sce) {
     
-    $scope.isOpen = false;
+    $scope.$root.currentPoll = undefined;
     $scope.onChangePoll = function(){
         var e = document.getElementById("anketler");
-        $scope.currentPoll = e.options[e.selectedIndex].value;
-        $scope.isOpen = true;
+        $scope.$root.currentPoll = e.options[e.selectedIndex].value;
     }
 
 

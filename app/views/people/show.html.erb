@@ -1,30 +1,36 @@
 <div ng-app="pollModule" ng-controller="pollCtrl">
 	<p id="notice"><%= notice %></p>
-	<%= @person.person_first_name %>
-	<%= @person.person_last_name %>
-	<%= @person.person_birthday %>
-
+	<p><b>Adı:</b> <%= @person.person_first_name %></p>
+	<p><b>Soyadı:</b> <%= @person.person_last_name %></p>
+	<p><b>Doğum Tarihi:</b> <%= @person.person_birthday %></p>
+	
+	
+	<h4>Anket Ataması İşlemleri</h4>
+	Anketler:
 	<select id="anketler" ng-click="onChangePoll()" >
+			<option value="">
+				Lütfen anket seçiniz
+			</option>
 		<% Poll.all.each do |pp| %>
 			<option value="<%= pp.id %>">
 				<%= pp.poll_name %>
 			</option>
 		<%end%>
 	</select>
-
-	{{currentPoll}}
+	</br>
+	Seçili anket id : {{currentPoll}}
 	<%= link_to 'ATAMA YAP', URI::unescape(assignPassCode_path(:poll_id => ('{{currentPoll}}'), :person_id => @person )), method: :post,
     class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--2-col" %>
 
 	<%if PassCode.where(person_id: @person.id).size != 0 %>
-	<h3>Kişiye Atanmış Giriş Kodları</h3>
+	<h3>Kişinin Atandığı Anketler ve Giriş Kodları</h3>
 	
 	<table class="mdl-data-table mdl-js-data-table">
   <thead>
     <tr>
       <th class="mdl-data-table__cell--non-numeric">Giriş Kodu</th>
       <th class="mdl-data-table__cell--non-numeric">Anket</th>
-      <th class="mdl-data-table__cell--non-numeric">Anket</th>
+      <th class="mdl-data-table__cell--non-numeric"></th>
     </tr>
   </thead>
 
@@ -42,13 +48,10 @@
   </tbody>
 </table>
 <% else %>
-	<h4>Kişiye Atanmış Giriş Kodu Bulunmamakta</h3>
+	<h4>Kişi herhangi bir ankete atanmamış !</h4>
 <% end %>
+</br>
 
-
-
-	
-
-	<%= link_to 'Edit', edit_person_path(@person) %> |
-	<%= link_to 'Back', people_path %>
+	<%= link_to 'KİŞİYİ DÜZENLE', edit_person_path(@person), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+	<%= link_to 'GERİ', people_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
 </div>

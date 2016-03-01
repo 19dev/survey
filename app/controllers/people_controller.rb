@@ -11,6 +11,7 @@ class PeopleController < ApplicationController
   # GET /people/1
   # GET /people/1.json
   def show
+    @first_poll = Poll.first.id
   end
 
   # GET /people/new
