@@ -24,6 +24,27 @@ class PeopleController < ApplicationController
 
   # POST /people
   # POST /people.json
+
+  def assignPassCode
+    @poll_id = params[:poll_id]
+    @person_id = params[:person_id]
+    @pass_codes = PassCode.where(poll_id: @poll_id, person_id: nil)
+
+    if @pass_codes.size != 0
+      @pass_code = @pass_codes.first
+      @pass_code.person_id = @person_id
+      @pass_code.save
+      flash[:notice]="Giriş kodu ataması başarıyla yapıldı"
+          redirect_to person_path(@person_id) and return
+
+    else
+      flash[:notice]="Atanabilecek giriş kodu bulunamadı. Lütfen anket için yeni kod üretin !"
+          redirect_to person_path(@person_id) and return      
+    end
+
+
+  end
+
   def create
     @person = Person.new(person_params)
 

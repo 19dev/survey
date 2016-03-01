@@ -3,15 +3,52 @@
 	<%= @person.person_first_name %>
 	<%= @person.person_last_name %>
 	<%= @person.person_birthday %>
+
 	<select id="anketler" ng-click="onChangePoll()" >
 		<% Poll.all.each do |pp| %>
-			  <option value="<%= pp.id %>"><%= pp.poll_name %></option>
+			<option value="<%= pp.id %>">
+				<%= pp.poll_name %>
+			</option>
 		<%end%>
 	</select>
+
 	{{currentPoll}}
-	<%= simple_form_for Poll.all.first do |f| %>
-		<%= f.collection_select :poll_name, Question.all, :id, :question_header  %>
-	<%end%>
+	<%= link_to 'ATAMA YAP', URI::unescape(assignPassCode_path(:poll_id => ('{{currentPoll}}'), :person_id => @person )), method: :post,
+    class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--2-col" %>
+
+	<%if PassCode.where(person_id: @person.id).size != 0 %>
+	<h3>Kişiye Atanmış Giriş Kodları</h3>
+	
+	<table class="mdl-data-table mdl-js-data-table">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Giriş Kodu</th>
+      <th class="mdl-data-table__cell--non-numeric">Anket</th>
+      <th class="mdl-data-table__cell--non-numeric">Anket</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% PassCode.where(person_id: @person.id).each do |pass_code| %>
+      <tr>
+        <td class="mdl-data-table__cell--non-numeric"><%= pass_code.passcode %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= Poll.find(pass_code.poll_id).poll_name %>
+        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'SİL', home_index_path,
+    class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--2-col" %></td>
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+	<h4>Kişiye Atanmış Giriş Kodu Bulunmamakta</h3>
+<% end %>
+
+
+
+	
+
 	<%= link_to 'Edit', edit_person_path(@person) %> |
 	<%= link_to 'Back', people_path %>
 </div>

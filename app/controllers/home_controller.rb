@@ -1,7 +1,5 @@
 class HomeController < ApplicationController
 	before_action :set_home, only: [:survey, :survey_entrance, :record]
-	require 'nokogiri'
-	require 'open-uri'
 
 	def survey
 
