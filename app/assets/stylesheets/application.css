@@ -143,3 +143,16 @@
     -ms-user-select: none;
     user-select: none;
 }
+
+.nested-fields {
+  background-color: #BBDEFB;
+  border: 1px solid #BBDEFB;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.nested-fields-links {
+  color: black;
+  font-weight: bold;
+}
+

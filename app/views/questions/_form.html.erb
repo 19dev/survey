@@ -1,56 +1,58 @@
-  <%= simple_form_for @question do |f| %>
+<%= simple_form_for @question do |f| %>
 
 
-  <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-        <div class="mdl-tabs__tab-bar">
-          <a href="#lannister-panel" class="mdl-tabs__tab is-active">Soru BİLGİLERİ</a>
-          <a href="#starks-panel" class="mdl-tabs__tab">Seçenekler</a>
-        </div>
-          </br>
-        <div class="mdl-tabs__panel is-active" id="lannister-panel">
-          <div class="mdl-grid" style="width: 40%">
-              <h4 class="labels" >Soru:</h4>
-            <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-              <%= f.input :question_header, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: false %>
-            </div>
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 
-            <h4 class="labels" >Açıklaması:</h4>
-            <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-              <%= f.input :question_description, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: false %>
-          </div>
-            <h4 class="labels" >Resimleri:</h4>
+  <div class="mdl-tabs__tab-bar">
+    <a href="#lannister-panel" class="mdl-tabs__tab is-active">Soru BİLGİLERİ</a>
+    <a href="#starks-panel" class="mdl-tabs__tab">Seçenekler</a>
+  </div>
 
-            <div id='question_images' class=" mdl-cell--12-col">
-              <%= f.simple_fields_for :question_images do |question_image| %>
-                <%= render 'question_image_fields', :f => question_image %>
-              <%end%>
-            <div class='links'>
-              <%= link_to_add_association '+ Yeni Resim Ekle', f, :question_images %>
-            </div>
-          </div>
-          
+  <div class="mdl-tabs__panel is-active" id="lannister-panel">
+
+    <div class="mdl-grid" style="width: 40%">
+      
+      <h3>Soru:</h3>
+      <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+        <%= f.input :question_header, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: "_" %>
+      </div>
+
+      <h3>Açıklaması:</h3>
+      <div class="field mdl-cell mdl-cell--12-col">
+        <%= f.cktext_area :question_description, :ckeditor=> {:language => 'tr'} %>
+      </div>
+      
+      <h3>Soru Gövdesi Resimleri:</h3>
+      <div id='question_images' class="mdl-cell mdl-cell--12-col">
+        <%= f.simple_fields_for :question_images do |question_image| %>
+        <%= render 'question_image_fields', :f => question_image %>
+        <%end%>
+        <div class='links'>
+          <%= link_to_add_association '+ Yeni Resim Ekle', f, :question_images, class:"nested-fields-links" %>
         </div>
       </div>
 
-    <div class="mdl-tabs__panel  mdl-grid" id="starks-panel">
-      <div class="mdl-cell mdl-cell--4-col" style="tex-align:center">
-        <h3>Seçenekler</h3>
-
-     
-      <div id='answers' class=" mdl-cell--12-col">
-          <%= f.simple_fields_for :answers do |answer| %>
-            <%= render 'answer_fields', :f => answer %>
-          <%end%>
-      <div class='links'>
-        <%= link_to_add_association '+ Yeni Seçenek Ekle', f, :answers %>
-      </div>
     </div>
-     </div>
+
+  </div>
+
+  <div class="mdl-tabs__panel  mdl-grid" id="starks-panel">
+    <div class="mdl-cell mdl-cell--4-col" style="tex-align:center">
+      <div id='answers' class=" mdl-cell--12-col">
+        <%= f.simple_fields_for :answers do |answer| %>
+        <%= render 'answer_fields', :f => answer %>
+        <%end%>
+        <div class='links'>
+          <%= link_to_add_association '+ Yeni Seçenek Ekle', f, :answers, class:"nested-fields-links" %>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 
-    <div  class="actions mdl-cell mdl-cell--12-col">
-      <%= f.submit "KAYDET", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
-    </div>
+<div  class="actions mdl-cell mdl-cell--12-col">
+  <%= f.submit "KAYDET", class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
+</div>
 
-  <% end %>
+<% end %>
