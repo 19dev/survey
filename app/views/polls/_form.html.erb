@@ -1,71 +1,68 @@
 <%= simple_form_for @poll do |f| %>
 
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-        <div class="mdl-tabs__tab-bar">
-          <a href="#lannister-panel" class="mdl-tabs__tab is-active">GENEL BİLGİLER</a>
-          <a href="#starks-panel" class="mdl-tabs__tab">SORULAR</a>
-        </div>
-          </br>
-                  <div class="mdl-tabs__panel is-active" id="lannister-panel">
-
-
-<div class="mdl-grid" style="width: 50%">
-  <h3>Anket Adı:</h3>
-  <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col ">
-    <%= f.input :poll_name, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"} %>
+  <div class="mdl-tabs__tab-bar">
+    <a href="#lannister-panel" class="mdl-tabs__tab is-active">GENEL BİLGİLER</a>
+    <a href="#starks-panel" class="mdl-tabs__tab">SORULAR</a>
   </div>
+  <div class="mdl-tabs__panel is-active" id="lannister-panel">
+    <div class="mdl-grid" style="width: 50%">
+      <h3>Anket Adı:</h3>
+      <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col ">
+        <%= f.input :poll_name, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: "_" %>
+      </div>
 
 
-    <h3>Açıklama:</h3>
+      <h3>Açıklama:</h3>
+      <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+        <%= f.cktext_area :poll_description, input_html: { class: "mdl-textfield__input"},label_html:{class: "mdl-textfield__label"}, :ckeditor=> {:language => 'tr'} %>
+      </div>
 
-  <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-    <%= f.cktext_area :poll_description, input_html: { class: "mdl-textfield__input"},label_html:{class: "mdl-textfield__label"}, :ckeditor=> {:language => 'tr'} %>
-  </div>
+      <h3>Başlangıç Zamanı :</h3>
+      <div class="mdl-cell mdl-cell--12-col">
+        <%= f.input :poll_start_date, label: false %>
+      </div>
 
-  <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-    <%= f.input :poll_start_date, label: "Başlangıç Zamanı : " %>
-  </div>
-  <div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-    <%= f.input :poll_finish_date, label: "Bitiş Zamanı : " %>
-  </div>
-  <h3>Anket Karşılama Sayfasındaki Resimler:</h3>
-  <div>
-    <div id='poll_images' class="">
-      <%= f.simple_fields_for :poll_images do |pi| %>
+      <h3>Bitiş Zamanı :</h3>
+      <div class="mdl-cell mdl-cell--12-col">
+        <%= f.input :poll_finish_date, label: false %>
+      </div>
+
+      <h3>Geri Bildirim:</h3>
+      <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+        <%= f.input :poll_feedback ,input_html: { class: "mdl-textfield__input"},label_html:{class: "mdl-textfield__label"}, label: "Anket sonunda kullanıcıya gösterilecek geri bildirim" %>
+      </div>
+
+      <h3>Anket Karşılama Sayfasındaki Resimler:</h3>
+      <div id='poll_images' class="">
+        <%= f.simple_fields_for :poll_images do |pi| %>
         <%= render 'poll_image_fields', :f => pi %>
-      <%end%>
-  <div class='links'>
-    <%= link_to_add_association '+ Yeni Resim Ekle', f, :poll_images %>
+        <%end%>
+        <div class='links'>
+          <%= link_to_add_association '+ Yeni Resim Ekle', f, :poll_images %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="mdl-tabs__panel  mdl-grid" id="starks-panel">
+
+    <div class="mdl-grid" style="width: 50%">
+
+      <div id='questions' class=" mdl-cell--12-col">
+        <%= f.simple_fields_for :questions do |question| %>
+        <%= render 'question_fields', :f => question %>
+        <% end %>
+        <div class='links'>
+          <%= link_to_add_association '+ Soru ekle', f, :questions %>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
-  </div>
-
-<h3>Geri Bildirim:</h3>
-<div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-  <%= f.input :poll_feedback ,input_html: { class: "mdl-textfield__input"},label_html:{class: "mdl-textfield__label"}, label: "Açıklaması"%>
-
-  
-</div>
-
-</div>
-</div>
-
-    <div class="mdl-tabs__panel  mdl-grid" id="starks-panel">
-
-<div class="mdl-grid" style="width: 50%">
-
-  <div id='questions' class=" mdl-cell--12-col">
-    <%= f.simple_fields_for :questions do |question| %>
-  <%= render 'question_fields', :f => question %>
-  <% end %>
-  <div class='links'>
-    <%= link_to_add_association '+ Soru ekle', f, :questions %>
-  </div>
-</div>
-</div>
-
-</div>
 <div class="actions mdl-cell mdl-cell--12-col">
   <%= f.submit 'Kaydet', class: "mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" %>
 </div>
