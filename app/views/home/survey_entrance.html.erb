@@ -1,20 +1,25 @@
-
 <div class="mdl-grid" ng-app="pollModule" ng-controller="pollCtrl">
 	<div class="mdl-cell mdl-cell--12-col">
-		<h1 >Anket giriş sayfası</h1>
-		<%= @poll.poll_name %>
-		<p ng-bind-html="renderHtml('<%= @poll.poll_description %>')">
+		<p>
+			<strong>Anket Adı:</strong>
+			<%= @poll.poll_name %>
 		</p>
+
+		<p>
+			<strong>Son Katılım Tarihi:</strong>
+			<%= @poll.poll_finish_date %>
+		</p>
+
+		<p ng-bind-html="renderHtml('<%= @poll.poll_description %>')"></p>
+		
 	</div>
+
 	<div class="mdl-cell mdl-cell--12-col">
 		<% @poll.poll_images.each do |pi| %>
-				<%= image_tag pi.image_url, style: "width:150px;height:200px;" %>
-				
+			<%= image_tag pi.image_url, style: "width:150px;height:200px;" %>
 		<%end%>
-		<br>
-		<%=link_to "GİRİŞ", URI::unescape(survey_path(:passcod => (params[:passcod]))), method: :post,class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"%>
+
+		<%=link_to "ANKETE BAŞLA", URI::unescape(survey_path(:passcod => (params[:passcod]))), method: :post,class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
 	</div>
-
-
 
 </div>
