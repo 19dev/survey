@@ -5,7 +5,7 @@
 	<p><b>Doğum Tarihi:</b> <%= @person.person_birthday %></p>
 	
 	
-	<h4>Anket Ataması İşlemleri</h4>
+	<h3>Anket Ataması İşlemleri</h3>
 	Anketler:
 	<select id="anketler" ng-click="onChangePoll()" >
 			<option value="">
@@ -23,7 +23,7 @@
     class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--2-col" %>
 
 	<%if PassCode.where(person_id: @person.id).size != 0 %>
-	<h3>Kişinin Atandığı Anketler ve Giriş Kodları</h3>
+	<h4>Kişinin Atandığı Anketler ve Giriş Kodları</h4>
 	
 	<table class="mdl-data-table mdl-js-data-table">
   <thead>
@@ -39,8 +39,8 @@
       <tr>
         <td class="mdl-data-table__cell--non-numeric"><%= pass_code.passcode %></td>
         <td class="mdl-data-table__cell--non-numeric"><%= Poll.find(pass_code.poll_id).poll_name %>
-        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'SİL', home_index_path,
-    class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--2-col" %></td>
+        <td class="mdl-data-table__cell--non-numeric"><%= link_to 'SİL', removePassCodeFromPerson_path(:pass_code_id => pass_code.id, :person_id => @person ), method: :post,
+    class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--2-col", data: { confirm: 'Kişiden bir anket ataması kaldırıyorsunuz ! Emin misiniz ?' } %></td>
 
         </td>
       </tr>

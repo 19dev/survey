@@ -22,9 +22,8 @@ Rails.application.routes.draw do
   post 'reportpasscode', to: "reports#reportpasscode"
   get 'passcode', to: "polls#passcode"
   post 'passcode', to: "polls#passcode"
-  get 'assignPassCode', to: "people#assignPassCode"
   post 'assignPassCode', to: "people#assignPassCode"
-
+  post 'removePassCodeFromPerson', to: "people#removePassCodeFromPerson"
   root to: "home#index"
   resources :polls do
       post :passCodeCreator, on: :member

@@ -37,13 +37,10 @@ pollModule.factory('$localstorage', ['$window', function($window) {
 
 pollModule.controller('pollCtrl', ['$scope', '$localstorage', '$sce', function($scope, $localstorage, $sce) {
     
-    $scope.$root.currentPoll = undefined;
     $scope.onChangePoll = function(){
         var e = document.getElementById("anketler");
-        $scope.$root.currentPoll = e.options[e.selectedIndex].value;
+        $scope.currentPoll = e.options[e.selectedIndex].value;
     }
-
-
 
 
     $scope.girisKodMiktar;

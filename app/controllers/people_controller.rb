@@ -41,8 +41,16 @@ class PeopleController < ApplicationController
       flash[:notice]="Atanabilecek giriş kodu bulunamadı. Lütfen anket için yeni kod üretin !"
           redirect_to person_path(@person_id) and return      
     end
+  end
 
-
+  def removePassCodeFromPerson
+    @pass_code_id = params[:pass_code_id]
+    @person_id = params[:person_id]
+    @pass_code = PassCode.find(@pass_code_id)
+    @pass_code.person_id = nil
+    @pass_code.save
+    flash[:notice]="Bir atama başarıyla kaldırıldı !"
+          redirect_to person_path(@person_id) and return 
   end
 
   def create
