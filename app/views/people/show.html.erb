@@ -40,7 +40,7 @@
         <td class="mdl-data-table__cell--non-numeric"><%= pass_code.passcode %></td>
         <td class="mdl-data-table__cell--non-numeric"><%= Poll.find(pass_code.poll_id).poll_name %>
         <td class="mdl-data-table__cell--non-numeric"><%= link_to 'SİL', removePassCodeFromPerson_path(:pass_code_id => pass_code.id, :person_id => @person ), method: :post,
-    class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--2-col", data: { confirm: 'Kişiden bir anket ataması kaldırıyorsunuz ! Emin misiniz ?' } %></td>
+    class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--2-col", data: { confirm: 'Bu işlem kişinin bu Giriş koduna ait bütün bilgilerini silecektir  !.  Emin misiniz ?' } %></td>
 
         </td>
       </tr>

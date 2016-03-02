@@ -49,6 +49,7 @@ class PeopleController < ApplicationController
     @pass_code = PassCode.find(@pass_code_id)
     @pass_code.person_id = nil
     @pass_code.save
+    @pass_code.destroy
     flash[:notice]="Bir atama başarıyla kaldırıldı !"
           redirect_to person_path(@person_id) and return 
   end
