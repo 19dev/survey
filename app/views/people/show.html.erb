@@ -3,7 +3,8 @@
 	<p><b>Adı:</b> <%= @person.person_first_name %></p>
 	<p><b>Soyadı:</b> <%= @person.person_last_name %></p>
 	<p><b>Doğum Tarihi:</b> <%= @person.person_birthday %></p>
-	<p><b>Genel Bilgiler:</b> <%= @person.person_descr %></p>
+	<p><b>Genel Bilgiler:</b></p>
+	<div ng-bind-html = "renderHtml('<%= @person.person_descr %>')" ></div>
 	
 	
 	<h3>Anket Ataması İşlemleri</h3>
@@ -18,8 +19,7 @@
 			</option>
 		<%end%>
 	</select>
-	</br>
-	Seçili anket id : {{currentPoll}}
+
 	<%= link_to 'ATAMA YAP', URI::unescape(assignPassCode_path(:poll_id => ('{{currentPoll}}'), :person_id => @person )), method: :post,
     class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--2-col" %>
 

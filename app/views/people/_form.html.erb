@@ -1,26 +1,31 @@
 <%= simple_form_for(@person) do |f| %>
-<%= f.error_notification %>
+
+<div style="width: 50%">
+	<% @person.errors.each do |attr,msg|  %>
+		<p class="alerts"><%= msg %></p>
+	<% end %>
+</div>
 
 <div class="mdl-grid" style="width: 50%">
 
 	<h3>Adı:</h3>
 	<div  class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col ">
-		<%=f.input :person_first_name, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: "_" %>
+		<%=f.input :person_first_name, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: "*", error: false %>
 	</div>
 
 	<h3>Soyadı:</h3>
 	<div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col ">
-		<%=f.input :person_last_name, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: "_" %>
+		<%=f.input :person_last_name, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: "*", error: false %>
 	</div>
 
 	<h3>Doğum Tarihi:</h3>
 	<div class="mdl-cell mdl-cell--12-col">
-		<%=f.input :person_birthday, html5: true, label: false %>
+		<%=f.input :person_birthday, html5: true, label: false, error: false %>
 	</div>
 
 	<h3>Genel Bilgi:</h3>
-	<div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col ">
-		<%=f.input :person_descr, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: "_" %>
+	<div class="field mdl-cell mdl-cell--12-col ">
+		<%=f.cktext_area :person_descr, :ckeditor=> {:language => 'tr'} %>
 	</div>
 	
 </div>

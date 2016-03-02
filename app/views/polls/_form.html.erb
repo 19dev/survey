@@ -1,5 +1,11 @@
 <%= simple_form_for @poll do |f| %>
 
+<div  style="width: 50%">
+  <% @poll.errors.each do |attr,msg|  %>
+    <p class="alerts"><%= msg %></p>
+  <% end %>
+</div>
+
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 
   <div class="mdl-tabs__tab-bar">
@@ -12,7 +18,7 @@
     <div class="mdl-grid" style="width: 50%">
       <h3>Anket Adı :</h3>
       <div class="field mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col ">
-        <%= f.input :poll_name, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: "_" %>
+        <%= f.input :poll_name, input_html: { class: "mdl-textfield__input "},label_html:{class: "mdl-textfield__label"}, label: "*", error: false %>
       </div>
 
 
@@ -23,12 +29,12 @@
 
       <h3>Başlangıç Zamanı :</h3>
       <div class="mdl-cell mdl-cell--12-col">
-        <%= f.input :poll_start_date , html5: true , label: false%>
+        <%= f.input :poll_start_date , html5: true , label: false, error: false %>
       </div>
 
       <h3>Bitiş Zamanı :</h3>
       <div class="mdl-cell mdl-cell--12-col">
-        <%= f.input :poll_finish_date, html5: true, label: false %>
+        <%= f.input :poll_finish_date, html5: true, label: false, error: false %>
       </div>
 
       <h3>Geri Bildirim :</h3>

@@ -156,3 +156,11 @@
   font-weight: bold;
 }
 
+.alerts {
+  background-color: #E91E63;
+  border: 1px solid #E91E63;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+

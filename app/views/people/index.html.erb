@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h2>Kişiler</h2>
-
+<% if @people.length != 0 %>
 <table class="mdl-data-table mdl-js-data-table">
   <thead>
     <tr>
@@ -25,6 +25,11 @@
     <% end %>
   </tbody>
 </table>
+<% else %>
+  <p>
+    Sistemde kişi kaydı bulunmuyor !
+  </p>
+<% end %>
 
 <br>
 
