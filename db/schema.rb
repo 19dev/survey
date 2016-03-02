@@ -91,8 +91,8 @@ ActiveRecord::Schema.define(version: 20160218080630) do
   create_table "polls", force: :cascade do |t|
     t.string   "poll_name",        limit: 255
     t.text     "poll_description", limit: 65535
-    t.datetime "poll_start_date"
-    t.datetime "poll_finish_date"
+    t.date     "poll_start_date"
+    t.date     "poll_finish_date"
     t.text     "poll_feedback",    limit: 65535
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
