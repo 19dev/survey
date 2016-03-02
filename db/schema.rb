@@ -37,10 +37,6 @@ ActiveRecord::Schema.define(version: 20160218080630) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.integer  "question_id",        limit: 4
-    t.string   "img_file_name",      limit: 255
-    t.string   "img_content_type",   limit: 255
-    t.integer  "img_file_size",      limit: 4
-    t.datetime "img_updated_at"
     t.string   "image",              limit: 255
   end
 
@@ -77,11 +73,10 @@ ActiveRecord::Schema.define(version: 20160218080630) do
   create_table "people", force: :cascade do |t|
     t.string   "person_first_name", limit: 255
     t.string   "person_last_name",  limit: 255
+    t.text     "person_descr",      limit: 65535
     t.date     "person_birthday"
-    t.integer  "person_tc",         limit: 8
-    t.string   "person_tel_no",     limit: 255
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "poll_images", force: :cascade do |t|
