@@ -1,4 +1,4 @@
-<% if Poll.all.length != 0 %>
+<% if Record.all.length != 0 %>
 <table class="mdl-data-table mdl-js-data-table">
 	<thead>
 		<tr>
@@ -13,7 +13,7 @@
 		<%if doespollhaverecords(poll.id)==true %>
 			<tr>
 				<td class="mdl-data-table__cell--non-numeric">
-						<%=link_to poll.poll_name,report_path(poll.id)%>
+					<%=link_to poll.poll_name,report_path(poll.id)%>
 				</td>
 			</tr>
 			<%end%>
@@ -24,6 +24,6 @@
 </table>
 <% else %>
 	<p>
-		Sistemde anket bulunmuyor !
+		Sistemde cevaplanmış anket bulunmuyor !
 	</p>
 <% end %>
