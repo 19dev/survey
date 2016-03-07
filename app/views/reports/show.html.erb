@@ -56,6 +56,7 @@
         <thead>
           <tr>
             <th class="mdl-data-table__cell--non-numeric">Giriş Kodları</th>
+            <th class="mdl-data-table__cell--non-numeric">Kişi</th>
             <th class="mdl-data-table__cell--non-numeric">Bitirdi</th>
           </tr>
         </thead>
@@ -69,6 +70,16 @@
             <%@poll_passcodes.each do |ps|%>
             <tr>
               <td class="mdl-data-table__cell--non-numeric"><%=link_to ps.passcode,reportpasscode_path(:id => ps)%></td>
+              <td>
+                <%if ps.person!=nil %>
+                  <p style="text-align:center;">
+                  <%= ps.person.person_first_name + " " + ps.person.person_last_name %>
+                  </p>
+                <% else %>
+                 <p style="text-align:center;">kişi yok</p>  
+                <%end%>
+              </td>
+
               <td class="mdl-data-table__cell--non-numeric">
                 <%if ps.pass_code_is_finished%>
                 <i class="material-icons">done</i>
@@ -79,8 +90,8 @@
             </tr>
             <% end %>
           </div>
-
         </tbody>
       </table>
     </div>
+
     </br>
