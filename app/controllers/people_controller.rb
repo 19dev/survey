@@ -28,7 +28,7 @@ class PeopleController < ApplicationController
   def assignPassCode
     @poll_id = params[:poll_id]
     @person_id = params[:person_id]
-    @pass_codes = PassCode.where(poll_id: @poll_id, person_id: nil)
+    @pass_codes = PassCode.where(poll_id: @poll_id, person_id: nil, pass_code_is_finished: false)
 
     if @pass_codes.size != 0
       @pass_code = @pass_codes.first
