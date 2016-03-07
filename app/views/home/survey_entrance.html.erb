@@ -18,7 +18,9 @@
 		<% @poll.poll_images.each do |pi| %>
 			<%= image_tag pi.image_url, style: "width:150px;height:200px;" %>
 		<%end%>
+	</div>
 
+	<div class="mdl-cell mdl-cell--12-col">
 		<%=link_to "ANKETE BAŞLA", URI::unescape(survey_path(:passcod => (params[:passcod]))), method: :post,class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
 	</div>
 
