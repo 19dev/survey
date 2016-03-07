@@ -72,11 +72,11 @@
               <td class="mdl-data-table__cell--non-numeric"><%=link_to ps.passcode,reportpasscode_path(:id => ps)%></td>
               <td>
                 <%if ps.person!=nil %>
-                  <p style="text-align:center;">
+                  <p style="text-align:center">
                   <%= ps.person.person_first_name + " " + ps.person.person_last_name %>
                   </p>
                 <% else %>
-                 <p style="text-align:center;">kişi yok</p>  
+                 <p style="text-align:center">Atama Yok</p>  
                 <%end%>
               </td>
 
