@@ -16,9 +16,6 @@ class PollsController < ApplicationController
     flash[:notice] = 'Giriş kodları oluşturuldu'
     redirect_to @poll
   end
-  def passcode
-    @passcode = PassCode.find(params[:id])
-  end
 
   def index
     @polls = Poll.all

@@ -75,7 +75,8 @@
             </br>
             <% @poll_passcodes.each do |pc| %>
             <tr>
-              <td class="mdl-data-table__cell--non-numeric"><%=link_to pc.passcode,passcode_path(:id => pc)%>
+              <td class="mdl-data-table__cell--non-numeric">
+                <%= pc.passcode %>
               </td>
               <td>
                 <%if pc.person!=nil %>

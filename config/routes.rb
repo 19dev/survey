@@ -20,8 +20,6 @@ Rails.application.routes.draw do
   get 'record', to: "home#record"
   get 'reportpasscode', to: "reports#reportpasscode"
   post 'reportpasscode', to: "reports#reportpasscode"
-  get 'passcode', to: "polls#passcode"
-  post 'passcode', to: "polls#passcode"
   post 'assignPassCode', to: "people#assignPassCode"
   post 'removePassCodeFromPerson', to: "people#removePassCodeFromPerson"
   root to: "home#index"
