@@ -8,22 +8,55 @@
 </div>
 <h2>SEÇENEKLER</h2>
 <% if @question_answers.length != 0 %>
+<div class="mdl-grid" style="align-content: center !important; justify-content: center !important" >
+  <% @question_answers.each do |question_answer| %>
+  
+    <div class="mdl-cell mdl-cell--4-col">
+            <% if question_answer.image.filename != nil && question_answer.answer_description.size != 0 %>
+                <div class="demo-card-square mdl-card mdl-shadow--2dp unselectable">
+                  <%= image_tag question_answer.image_url, class: "answer_image" %>
+                  <%= question_answer.answer_description %>
+                  <div class="mdl-card__title mdl-card--expand"></div>
+                  <div class="mdl-card__actions mdl-card--border">
+                    <%= link_to 'GÖSTER', question_answer, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"  %>
+                    <%= link_to 'DÜZENLE', edit_answer_path(question_answer), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"  %>
+                    <%= link_to 'SİL', question_answer, method: :delete, data: { confirm: 'Seçenek silinecek! Emin misiniz ?' }, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+                                  
+                  </div>
+                </div>
+            
+            <% elsif question_answer.image.filename == nil && question_answer.answer_description.size != 0 %>
+                <div class="demo-card-square mdl-card mdl-shadow--2dp unselectable">
+                    <div class="onlyDescriptionForQuestion">
+                      <p><%= question_answer.answer_description %></p>
+                    </div>
+                  <div class="mdl-card__title mdl-card--expand"></div>
+                  <div class="mdl-card__actions mdl-card--border">
+                    <%= link_to 'GÖSTER', question_answer, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"  %>
+                    <%= link_to 'DÜZENLE', edit_answer_path(question_answer), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"  %>
+                    <%= link_to 'SİL', question_answer, method: :delete, data: { confirm: 'Seçenek silinecek! Emin misiniz ?' }, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+                                  
+                  </div>
+                </div>
 
-    <% @question_answers.each do |question_answer| %>
-    <div class="demo-card-square mdl-card mdl-shadow--2dp">
-      <%= image_tag question_answer.image_url, class: "answer_image" %>
-  <div class="mdl-card__title mdl-card--expand"></div>
-  <div class="mdl-card__supporting-text">
-    <%= question_answer.answer_description %>
+            <% elsif question_answer.image.filename != nil && question_answer.answer_description.size == 0 %>
+                <div class="demo-card-square mdl-card mdl-shadow--2dp unselectable">
+                  <%= image_tag question_answer.image_url, class: "onlyImage" %>
+                  <%= question_answer.answer_description %>
+                  <div class="mdl-card__title mdl-card--expand"></div>
+                  <div class="mdl-card__actions mdl-card--border">
+                    <%= link_to 'GÖSTER', question_answer, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"  %>
+                    <%= link_to 'DÜZENLE', edit_answer_path(question_answer), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"  %>
+                    <%= link_to 'SİL', question_answer, method: :delete, data: { confirm: 'Seçenek silinecek! Emin misiniz ?' }, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+                                  
+                  </div>
+                </div>
+
+            <%end%>
+    </div>
+    <% end %>
   </div>
-  <div class="mdl-card__actions mdl-card--border">
-    <%= link_to 'GÖSTER', question_answer, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"  %>
-    <%= link_to 'DÜZENLE', edit_answer_path(question_answer), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"  %>
-    <%= link_to 'SİL', question_answer, method: :delete, data: { confirm: 'Seçenek silinecek! Emin misiniz ?' }, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
-  </div>
-</div>
-</br>
- <% end %>
+
 
 <% else %>
   <p>

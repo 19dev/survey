@@ -13,8 +13,6 @@
       <% end %>
       </div>
 
-
-      
       <p class="mdl-cell mdl-cell--12-col" ng-bind-html = "renderHtml('<%= poll_question.question_description %>')"></p>
     </div>
       <div class="mdl-grid" style="align-content: center !important; justify-content: center !important" >
@@ -33,7 +31,10 @@
             
             <% elsif answer.image.filename == nil && answer.answer_description.size != 0 %>
                 <div class="demo-card-square mdl-card mdl-shadow--2dp unselectable" ng-click="id_ekle_cikar(<%= answer.id %>)" ng-class="surveyCardClass(<%= answer.id %>)">
-                  <%= answer.answer_description %>
+                  <div class="onlyDescription">
+                    <p><%= answer.answer_description %></p>
+                  </div>
+                    
                 </div>
 
             <% elsif answer.image.filename != nil && answer.answer_description.size == 0 %>

@@ -1,7 +1,29 @@
+.onlyDescription {
+  position: absolute;
+  vertical-align: baseline;
+  top: 50%;
+  overflow: hidden;
+  transform: translateY(-50%);
+  text-align: center;
+  padding: 3px;
+}
+
+.onlyDescriptionForQuestion {
+  overflow: hidden;
+  text-align: center;
+  padding: 3px;
+  height: 267px !important;
+}
+
+.onlyImage {
+  height: 80%;
+}
+
+
 .answer_image {
   height: 70% !important;
-
 }
+
 #view-source {
 	position: fixed;
 	display: block;
@@ -119,11 +141,10 @@
 	background-color: #64B5F6 !important;
 }
 
-
-.survey_answer_image{
+.survey_answer_image {
   height: 88% !important;
   margin: 0 !important;
-  padding-bottom:5px;
+  padding-bottom: 5px;
 }
 
 .reports_answer_image{
