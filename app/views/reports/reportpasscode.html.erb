@@ -4,8 +4,19 @@
     <a href="#starks-panel" class="mdl-tabs__tab">ANKETE VERİLEN YANITLAR</a>
   </div>
   <div class="mdl-tabs__panel is-active" id="lannister-panel">
-    <p>Giriş Kodunun Oluşturulma Zamanı :<%=@pass_code.created_at.strftime("%Y-%m-%d | %H:%M")%></p>
-    <p>Anketin Yanıtlanma Zamanı :<%=@pass_code.updated_at.strftime("%Y-%m-%d | %H:%M")%></p>
+    <p><b>Anket Adı : </b> <%= @pass_code.poll.poll_name %></p>
+    <p>
+    <b>Atandığı Kişi :</b>
+    <% if @pass_code.person != nil %>
+      <%= @pass_code.person.person_first_name + " " + @pass_code.person.person_last_name %>
+    <% else %>
+      Yok
+    <% end %>
+    </p>
+
+    <p><b>Giriş Kodunun Oluşturulma Zamanı :</b> <%=@pass_code.created_at.strftime("%Y-%m-%d | %H:%M")%></p>
+
+    <p><b>Anketin Yanıtlanma Zamanı :</b> <%=@pass_code.updated_at.strftime("%Y-%m-%d | %H:%M")%></p>
   </div>
   <div class="mdl-tabs__panel mdl-grid" id="starks-panel">
     <%d=0%>
