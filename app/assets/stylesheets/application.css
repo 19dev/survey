@@ -8,11 +8,11 @@
   padding: 3px;
 }
 
-.onlyDescriptionForQuestion {
+.onlyDescriptionForAdmin {
   overflow: hidden;
   text-align: center;
+  height: 267px;
   padding: 3px;
-  height: 267px !important;
 }
 
 .onlyImage {

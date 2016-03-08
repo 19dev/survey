@@ -11,31 +11,68 @@
     <%d=0%>
     <%@questions.each do |pq|%>
     <%d=d+1%>
-    <h3 class=" mdl-cell mdl-cell--12-col">Soru <%=d%> : <%=pq.question_header%></h3>
+    <h3 class="mdl-cell mdl-cell--12-col">Soru <%=d%> : <%=pq.question_header%></h3>
     <div class="mdl-cell mdl-cell--1-col"></div>
     <div class="mdl-grid  mdl-cell mdl-cell--10-col">
-
+    <div class="mdl-grid mdl-cell mdl-cell--12-col" style="align-content: center !important; justify-content: center !important" >
       <%pq.answers.each do |pqa|%>
-      <div class="demo-card-square mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col">
-        <%= image_tag pqa.image.url, class: "reports_answer_image"%>
-        <div class="mdl-card__title mdl-card--expand">
+        <div class="mdl-cell mdl-cell--4-col">
+            <% if pqa.image.filename != nil && pqa.answer_description.size != 0 %>
+                <div class="demo-card-square mdl-card mdl-shadow--2dp unselectable">
+                  <%= image_tag pqa.image_url, class: "answer_image" %>
+                  <%= pqa.answer_description %>
+                  <div class="mdl-card__title mdl-card--expand"></div>
+                  <div class="mdl-card__actions mdl-card--border">
+                    <p>Seçilme Durumu
+                    <% if Record.where(:pass_code_id => @pass_code.id, :answer_id => pqa.id).any? %>
+                    <i class="material-icons">done</i>
+                    <% else %>
+                    <i class="material-icons">highlight_off</i>
+                    <% end %>
+                  </p>
+                                  
+                  </div>
+                </div>
+            
+            <% elsif pqa.image.filename == nil && pqa.answer_description.size != 0 %>
+                <div class="demo-card-square mdl-card mdl-shadow--2dp unselectable">
+                    <div class="onlyDescriptionForAdmin">
+                      <p><%= pqa.answer_description %></p>
+                    </div>
+                  <div class="mdl-card__title mdl-card--expand"></div>
+                  <div class="mdl-card__actions mdl-card--border">
+                    <p>Seçilme Durumu
+                    <% if Record.where(:pass_code_id => @pass_code.id, :answer_id => pqa.id).any? %>
+                    <i class="material-icons">done</i>
+                    <% else %>
+                    <i class="material-icons">highlight_off</i>
+                    <% end %>
+                  </p>
+                                  
+                  </div>
+                </div>
 
-        </div>
-        <div class="mdl-card__supporting-text">
-          <p><%= pqa.answer_description %></p>
+            <% elsif pqa.image.filename != nil && pqa.answer_description.size == 0 %>
+                <div class="demo-card-square mdl-card mdl-shadow--2dp unselectable">
+                  <%= image_tag pqa.image_url, class: "onlyImage" %>
+                  <%= pqa.answer_description %>
+                  <div class="mdl-card__title mdl-card--expand"></div>
+                  <div class="mdl-card__actions mdl-card--border">
+                    <p>Seçilme Durumu
+                    <% if Record.where(:pass_code_id => @pass_code.id, :answer_id => pqa.id).any? %>
+                    <i class="material-icons">done</i>
+                    <% else %>
+                    <i class="material-icons">highlight_off</i>
+                    <% end %>
+                  </p>
+                                  
+                  </div>
+                </div>
 
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-          <p>Seçilme Durumu
-            <% if Record.where(:pass_code_id => @pass_code.id, :answer_id => pqa.id).any? %>
-            <i class="material-icons">done</i>
-            <% else %>
-            <i class="material-icons">highlight_off</i>
-            <% end %>
-          </p>
-        </div>
-      </div>
+            <%end%>
+    </div>
       <%end%>
+      </div>
       </div>
     <%end%>
 
