@@ -3,18 +3,17 @@ class HomeController < ApplicationController
 
 	def surveyMobile
 			if @pass_code.blank?
-				flash[:notice]="Hatalı giriş kodu kullandınız !"
-				redirect_to home_index_path and return
+				render :json => {state: "1" }
 
 			else
 
 				if @pass_code.pass_code_is_finished
-					render :json => {state: "2" }
+					render :json => {state: "2" } and return
 				end
 				if DateTime.now < @pass_code.poll.poll_start_date
-					render :json => {state: "3" }
+					render :json => {state: "3" } and return
 				elsif DateTime.now > @pass_code.poll.poll_finish_date
-					render :json => {state: "4" }
+					render :json => {state: "4" } and return
 				end
 				@poll = Poll.find(@pid)
 
@@ -29,7 +28,7 @@ class HomeController < ApplicationController
 					end
 				end
 
-				render :json => [ {state: "0" }, @poll, @poll_questions_and_answers ]
+				render :json => [ @poll, @poll_questions_and_answers ] and return
 
 			end
 	end
