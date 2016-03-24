@@ -12,10 +12,12 @@ Rails.application.routes.draw do
   resources :reports
   resources :people
   get 'about', to: "home#about"
-  get 'survey', to: "home#survey"
   post 'survey_entrance', to: "home#survey_entrance"
-   get 'survey_entrance', to: "home#survey_entrance"
+  get 'survey_entrance', to: "home#survey_entrance"
+  get 'survey', to: "home#survey"
   post 'survey', to: "home#survey"
+  get 'surveyMobile', to: "home#surveyMobile"
+  post 'surveyMobile', to: "home#surveyMobile"
   post 'record', to: "home#record"
   get 'record', to: "home#record"
   get 'reportpasscode', to: "reports#reportpasscode"

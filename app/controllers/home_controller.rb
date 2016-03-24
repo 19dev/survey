@@ -1,8 +1,40 @@
 class HomeController < ApplicationController
-	before_action :set_home, only: [:survey, :survey_entrance, :record]
+	before_action :set_home, only: [:survey, :survey_entrance, :record, :surveyMobile]
+
+	def surveyMobile
+			if @pass_code.blank?
+				flash[:notice]="Hatalı giriş kodu kullandınız !"
+				redirect_to home_index_path and return
+
+			else
+
+				if @pass_code.pass_code_is_finished
+					render :json => {state: "2" }
+				end
+				if DateTime.now < @pass_code.poll.poll_start_date
+					render :json => {state: "3" }
+				elsif DateTime.now > @pass_code.poll.poll_finish_date
+					render :json => {state: "4" }
+				end
+				@poll = Poll.find(@pid)
+
+				@poll_questions = @poll.questions.all
+
+				@poll_questions_and_answers = []
+				@poll_questions.each do |question|
+					@poll_questions_and_answers.push(question)
+					question.answers.each do |answer|
+
+						@poll_questions_and_answers.push(answer)
+					end
+				end
+
+				render :json => [ {state: "0" }, @poll, @poll_questions_and_answers ]
+
+			end
+	end
 
 	def survey
-
 			if @pass_code.blank?
 				flash[:notice]="Hatalı giriş kodu kullandınız !"
 				redirect_to home_index_path and return
@@ -22,21 +54,14 @@ class HomeController < ApplicationController
 				end
 				@poll = Poll.find(@pid)
 				@poll_questions = @poll.questions.all.paginate(page: params[:page], per_page: 1)
-				@asd = Nokogiri::HTML("<h1>Mr. Belvedere Fan Club</h1>")
-
-
 			end
-
-
 	end
 
 	def survey_entrance
 			if @pass_code.blank?
 				flash[:notice]="Hatalı giriş kodu kullandınız !"
 				redirect_to home_index_path and return
-
 			else
-
 				if @pass_code.pass_code_is_finished
 					flash[:notice]="Bu giriş kodu daha önce kullanıldı !"
 					redirect_to home_index_path and return
@@ -49,11 +74,9 @@ class HomeController < ApplicationController
 					redirect_to home_index_path and return
 				end
 				@poll = Poll.find(@pid)
-				@poll_questions = @poll.questions.all.paginate(page: params[:page], per_page: 1)
-
 			end
 	end
-	
+
 	def record
 		@idler = params[:idler][1..-2]
 		@idler = @idler.split(",").map(&:to_i)
