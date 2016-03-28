@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 	before_action :set_home, only: [:survey, :survey_entrance, :record, :surveyMobile]
-
 	def surveyMobile
+
 			if @pass_code.blank?
 				render :json => {state: "1" }
 
@@ -17,18 +17,22 @@ class HomeController < ApplicationController
 				end
 				@poll = Poll.find(@pid)
 
+				@secenekh=Hash.new
+				@soru=Hash.new
+
 				@poll_questions = @poll.questions.all
-
-				@poll_questions_and_answers = []
-				@poll_questions.each do |question|
-					@poll_questions_and_answers.push(question)
-					question.answers.each do |answer|
-
-						@poll_questions_and_answers.push(answer)
-					end
+				@ps2=@poll_questions
+				@sorular=[]
+				@ps2.each do |pq|
+					@soru=Hash["id"=>pq.id,"question_header"=>pq.question_header,"question_description"=>pq.question_description,"answers"=>pq.answers.all]
+					@sorular.push(@soru)
 				end
 
-				render :json => [ @poll, @poll_questions_and_answers ] and return
+
+
+
+
+				render :json => [ @poll,@sorular] and return
 
 			end
 	end
