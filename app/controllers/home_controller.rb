@@ -1,5 +1,18 @@
 class HomeController < ApplicationController
-	before_action :set_home, only: [:survey, :survey_entrance, :record, :surveyMobile]
+	before_action :set_home, only: [:survey, :survey_entrance, :record, :surveyMobile, :recordMobile]
+
+	def recordMobile
+		@idler = params[:idler]
+		@idler = @idler.split(",").map(&:to_i)
+		@idler.each do |id|
+			Record.create(:pass_code_id => @pass_code_id, :answer_id => id)
+		end
+		pass_code = PassCode.find(@pass_code_id)
+		pass_code.pass_code_is_finished = true
+		pass_code.save
+		render :json => {state: "Cevaplarınız sisteme kaydedildi." }
+	end
+
 	def surveyMobile
 
 			if @pass_code.blank?
@@ -15,6 +28,7 @@ class HomeController < ApplicationController
 				elsif DateTime.now > @pass_code.poll.poll_finish_date
 					render :json => {state: "4" } and return
 				end
+
 				@poll = Poll.find(@pid)
 
 				@secenekh=Hash.new

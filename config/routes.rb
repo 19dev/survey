@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   post 'surveyMobile', to: "home#surveyMobile"
   post 'record', to: "home#record"
   get 'record', to: "home#record"
+  post 'recordMobile', to: "home#recordMobile"
+  get 'recordMobile', to: "home#recordMobile"
   get 'reportpasscode', to: "reports#reportpasscode"
   post 'reportpasscode', to: "reports#reportpasscode"
   post 'assignPassCode', to: "people#assignPassCode"
