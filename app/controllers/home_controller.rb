@@ -30,7 +30,7 @@ class HomeController < ApplicationController
 				end
 
 				@poll = Poll.find(@pid)
-
+				@person=@pass_code.person
 				@secenekh=Hash.new
 				@soru=Hash.new
 
@@ -46,7 +46,7 @@ class HomeController < ApplicationController
 
 
 
-				render :json => [ @poll,@sorular] and return
+				render :json => [ @poll,@sorular,@person] and return
 
 			end
 	end
